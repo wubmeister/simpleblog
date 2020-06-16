@@ -1,0 +1,284 @@
+/* GENERAL */
+
+.nav {
+    background-color: var(--nav-background, transparent);
+    color: var(--nav-text-color, transparent);
+}
+
+.nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav li {
+    display: block;
+}
+
+.nav li.subheader {
+    background-color: var(--nav-subheader-background, rgba(0, 0, 0, 0.05));
+    padding: .5rem 1rem;
+
+    text-transform: uppercase;
+    font-size: .75rem;
+}
+
+.nav a {
+    display: block;
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 1rem;
+    font-size: 1rem;
+    line-height: 1;
+    color: inherit;
+    transition: background-color .2s, color .2s, opacioty .2s;
+}
+.nav a:before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0; right: 0; left: 1rem;
+    height: 1px;
+    background-color: var(--nav-line-color, rgba(0, 0, 0, 0.05));
+}
+
+
+/* ACCORDION */
+
+.nav-accordion li {
+    position: relative;
+}
+.nav-accordion li ul {
+    background-color: var(--nav-subnav-background, rgba(0, 0, 0, 0.05));
+    height: 0;
+    overflow: hidden;
+}
+.nav-accordion li ul li {
+    padding-left: 1rem;
+}
+.nav-accordion li ul li a:before {
+    left: 2rem;
+}
+.nav-accordion li ul li a {
+    font-size: .875em;
+}
+.nav-accordion li ul li ul {
+    margin-left: -1rem;
+}
+.nav-accordion li ul.animated {
+    transition: height .3s cubic-bezier(.65, 0, 0, 1);
+}
+.nav-accordion li.node:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0; right: 0;
+    width: 3rem;
+    height: 3rem;
+    background: center / 1rem 1rem no-repeat url("../images/chevron-down.svg");
+    transition: transform .3s;
+    cursor: pointer;
+}
+.nav-accordion.nav-inverted li.node:after {
+    background-image: url("../images/chevron-down-inverted.svg");
+}
+.nav-accordion li.node.open:after {
+    transform: rotate(180deg);
+}
+.nav-accordion li.active > a {
+    color: var(--nav-active-color, #888);
+}
+
+
+/* DRILLDOWN */
+
+.nav-drilldown .nav-nav {
+    height: 3rem;
+    border-bottom: 1px solid var(--nav-line-color, rgba(0, 0, 0, 0.05));
+    display: flex;
+}
+.nav-drilldown .nav-nav .nav-back {
+    width: 3rem;
+    flex-shrink: 0;
+    -webkit-appearance: none;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    background: none;
+    color: transparent;
+    cursor: pointer;
+    background: center / 1rem 1rem no-repeat url("../images/chevron-left.svg");
+}
+.nav-drilldown.nav-inverted .nav-nav .nav-back {
+    background-image: url("../images/chevron-left-inverted.svg");
+}
+.nav-drilldown .nav-nav .nav-back:disabled {
+    opacity: 0;
+    pointer-events: none;
+}
+.nav-drilldown .nav-nav .nav-title {
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1;
+    padding: 1rem 4rem 1rem 1rem;
+
+}
+.nav-drilldown .nav-content {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.nav-drilldown ul {
+    background-color: var(--nav-background, white);
+}
+.nav-drilldown li ul {
+    position: absolute;
+    top: 0rem; left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateX(100%);
+    z-index: 1;
+    transition: transform .3s cubic-bezier(.65, 0, 0, 1);
+}
+.nav-drilldown li a {
+    position: relative;
+}
+.nav-drilldown li.node > a:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0; right: 0;
+    width: 3rem;
+    height: 3rem;
+    background: center / 1rem 1rem no-repeat url("../images/chevron-right.svg");
+    cursor: pointer;
+}
+.nav-drilldown.nav-inverted li.node > a:after {
+    background: center / 1rem 1rem no-repeat url("../images/chevron-right-inverted.svg");
+}
+.nav-drilldown li.node.open > ul {
+    transform: none;
+}
+.nav-drilldown li.active > a {
+    color: var(--nav-active-color, #888);
+}
+
+/* DROPDOWN */
+
+.nav-dropdown {
+    position: relative;
+    z-index:100;
+}
+.nav-dropdown > ul {
+    display: flex;
+    align-items: center;
+}
+.nav-dropdown.mega > ul {
+    position: relative;
+}
+.nav-dropdown.mega li a {
+    position: relative;
+}
+.nav-dropdown:not(.mega) li {
+    position: relative;
+}
+.nav-dropdown li ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 100%;
+    white-space: nowrap;
+    background-color: var(--nav-dropdown-background, white);
+    color: var(--nav-dropdown-text-color, inherit);
+    box-shadow: 0 3px 24px 0 rgba(0, 0, 0, 0.06);
+    border-radius: 2px;
+    padding: .25rem 0;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s;
+}
+.nav-dropdown li:hover > ul {
+    opacity: 1;
+    pointer-events: auto;
+}
+.nav-dropdown.mega > ul > li > ul > li {
+    width: 25%;
+}
+.nav-dropdown.mega li ul ul {
+    left: 25%;
+    min-width: 0;
+    width: 75%;
+    box-shadow: none;
+    height: 100%;
+}
+.nav-dropdown li ul a {
+    padding: .75rem 3rem .75rem 1rem;
+    /*color: rgba(63, 63, 68, 0.75);*/
+}
+.nav-dropdown li ul li:hover > a {
+    background-color: var(--nav-hover-background, rgba(0, 0, 0, 0.05));
+    color: var(--nav-hover-color, inherit);
+}
+.nav-dropdown li ul li.active a {
+    color: var(--nav-active-color, #09F);
+}
+.nav-dropdown > ul > li.node > a {
+    padding-right: 2.125rem;
+}
+.nav-dropdown li.node > a:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0; right: 0;
+    width: 3rem;
+    cursor: pointer;
+}
+.nav-dropdown > ul > li.node > a:after {
+    width: 2.75rem;
+    height: 3rem;
+    background: center / 1rem 1rem no-repeat url("../images/chevron-down.svg");
+}
+.nav-dropdown li li.node > a:after {
+    height: 2.5rem;
+    background: center / 1rem 1rem no-repeat url("../images/chevron-right.svg");
+}
+.nav-dropdown.nav-inverted li li.node > a:after {
+    background: center / 1rem 1rem no-repeat url("../images/chevron-right-inverted.svg");
+}
+.nav-dropdown li ul ul {
+    top: -.25rem;
+    left: 100%;
+}
+.nav-dropdown > ul > li > a:before {
+    height: 2px;
+    background-color: var(--nav-underline-color, currentColor);
+    left: .875rem;
+    right: .875rem;
+    bottom: .5rem;
+
+    transform: translateY(5px);
+    opacity: 0;
+    transition: transform .2s, opacity .2s;
+}
+.nav-dropdown > ul > li.item > a:before {
+    display: none;
+}
+.nav-dropdown > ul > li:hover > a:before,
+.nav-dropdown > ul > li.active > a:before {
+    transform: none;
+    opacity: 1;
+}
+.nav-dropdown > ul > li.active > a:before {
+    background-color: var(--nav-active-color, #09F);
+}
+.nav-dropdown li li:last-child a:before {
+    display: none;
+}
+.nav-dropdown li.subheader {
+    padding-top: .875rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+}

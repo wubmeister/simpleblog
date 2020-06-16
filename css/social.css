@@ -1,0 +1,23 @@
+.social-link {
+    display: inline-block !important;
+    text-decoration: none;
+    opacity: 1 !important;
+    padding: 0;
+}
+.social-link i {
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    margin-right: .5em;
+    margin-bottom: .5em;
+    line-height: 2em;
+    text-align: center;
+    border-radius: 50%;
+    background-color: rgba(var(--counter-color-rgb), 0.5);
+    color: var(--main-color) !important;
+    opacity: 1 !important;
+    transition: background-color .2s;
+}
+.social-link:hover i {
+    background-color: rgba(var(--counter-color-rgb), 0.7);
+}

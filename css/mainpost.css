@@ -1,0 +1,101 @@
+.mainposts {
+    padding: 0 1rem;
+}
+.mainpost {
+    position: relative;
+    margin: 1.5rem -1rem;
+    padding: 1px 0;
+    background-color: var(--main-color, #ebebeb);
+}
+.mainpost > .content {
+    background-color: var(--main-color, #ebebeb);
+    color: var(--counter-color);
+    padding: 1.5rem;
+
+    border-radius: var(--box-border-radius, 0);
+}
+.mainpost > .content :last-child {
+    margin-bottom: 0;
+}
+.mainpost > .image {
+    background-position: center;
+    background-size: cover;
+    border-radius: var(--box-border-radius, 0);
+    margin: 1.5rem 1.5rem 0 1.5rem;
+    box-shadow: var(--block-shadow);
+}
+.mainpost > .content + .image {
+    margin: 0 1.5rem 1.5rem 1.5rem;
+}
+.mainpost > .image:before {
+    content: "";
+    display: block;
+    height: 0;
+    padding-top: 65%;
+}
+
+.mainpost h2 {
+    font-size: 2rem;
+    color: var(--counter-color);
+}
+.mainpost h2 a[href] {
+    color: inherit;
+    text-decoration: none;
+}
+
+.mainpost .link {
+    color: var(--counter-color);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium, 500);
+    opacity: .8;
+    transition: opacity .2s;
+}
+.mainpost .link:hover {
+    opacity: 1;
+}
+
+@media screen and (min-width: 768px) {
+    .mainposts {
+        padding: 3.125rem 0;
+    }
+    .mainpost {
+        padding: 0 0;
+        background: none;
+    }
+    .mainpost h2 {
+        font-size: 2.5rem;
+        line-height: 1;
+    }
+    .mainpost > .content {
+        position: relative;
+        z-index: 1;
+        margin-left: 0;
+        margin-top: 5rem;
+        margin-bottom: 5rem;
+        padding: 7rem 8rem 7rem 5rem;
+        width: calc(50% + 5rem);
+        background-color: var(--main-color, #ebebeb);
+    }
+    .mainpost > .image:before {
+        display: none;
+    }
+    .mainpost > .image {
+        position: absolute;
+        top: 3.125rem;
+        bottom: 3.125rem;
+        left: 0;
+        width: 50%;
+        z-index: 2;
+        margin: 0;
+    }
+    .mainpost > .content + .image {
+        left: auto; right: 0;
+    }
+
+    .mainpost > .image + .content {
+        left: auto;
+        margin-left: auto;
+        margin-right: 0;
+        padding: 7rem 5rem 7rem 7rem;
+    }
+}

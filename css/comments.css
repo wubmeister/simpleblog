@@ -1,0 +1,180 @@
+.comments {
+    margin: 3rem 0;
+    font-family: var(--text-font, sans-serif);
+}
+
+.comment {
+    display: flex;
+}
+.comment + .comment {
+    margin-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding-top: 1rem;
+}
+
+.comment .avatar {
+    width: 2rem;
+    margin-right: .5rem;
+    flex-shrink: 0;
+}
+.comment .avatar img {
+    display: block;
+    width: 100%;
+    border-radius: 50%;
+}
+
+.comment .author {
+    font-weight: var(--font-weight-bold, 700);
+}
+.comment .author .meta {
+    display: inline-block;
+    margin-left: 0.5em;
+    margin-top: 0;
+}
+.comment .author .meta:before {
+    content: '\00B7';
+    display: inline-block;
+    margin-right: 0.5em;
+}
+.comment .content {
+    line-height: 1.325;
+}
+.comment .content :first-child {
+    margin-top: 0;
+}
+.comment .content :last-child {
+    margin-bottom: 0;
+}
+
+.comment .replies {
+    margin-top: 1rem;
+}
+.comment .replies .comment + .comment {
+    border-top: none;
+    padding-top: 0;
+}
+
+.comment .actions {
+    margin-top: -1em;
+}
+.comment .link {
+    font-size: .875em;
+    color: rgba(var(--text-color-rgb), 0.5);
+    text-decoration: none;
+}
+.comment .link:hover {
+    color: rgba(var(--text-color-rgb), 0.75);
+}
+
+@media screen and (min-width: 576px) {
+    .comment .avatar {
+        width: 3rem;
+        margin-right: 1rem;
+    }
+}
+
+#comment-form {
+    display: none;
+    background-color: rgba(var(--text-color-rgb), 0.05);
+    padding: 1rem;
+    margin-top: 2rem;
+    border-radius: 5px;
+}
+
+#comment-form [data-cancel-comment] {
+    float: right;
+}
+
+#comment-form h3 {
+    margin-bottom: 0.5em;
+}
+
+.comment-form {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -.5rem;
+}
+.comment-form > p {
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 0 0.5rem;
+}
+.comment-form > p:last-child {
+    margin-bottom: 0;
+}
+
+.comment-form .comment-form-author,
+.comment-form .comment-form-email,
+.comment-form .comment-form-url,
+.comment-form .comment-form-cookies-consent {
+    width: 50%;
+}
+
+.comment-form span.required {
+    color: var(--main-color, #09f);
+    font-weight: var(--font-weight-bold, 700);
+}
+.comment-form label {
+    display: block;
+    margin-bottom: .25em;
+    color: rgba(var(--text-color-rgb), 0.75);
+}
+.comment-form input[type="text"],
+.comment-form input[type="email"],
+.comment-form input[type="url"],
+.comment-form textarea {
+    -webkit-appearance: none;
+    display: block;
+    width: 100%;
+    margin: 0;
+    border: 1px solid #ebebeb;
+    border-radius: 3px;
+    padding: .5rem .75rem;
+    transition: border-color .2s, box-shadow .2s;
+}
+.comment-form input[type="text"]:focus,
+.comment-form input[type="email"]:focus,
+.comment-form input[type="url"]:focus,
+.comment-form textarea:focus {
+    outline: none;
+    border-color: var(--main-color, #09f);
+    box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.06);
+}
+
+.comment-form p {
+    position: relative;
+}
+.comment-form input[type="checkbox"] {
+    position: absolute;
+    z-index: -1;
+}
+.comment-form input[type="checkbox"] + label {
+    padding-left: 1.75rem;
+    position: relative;
+    cursor: pointer;
+}
+.comment-form input[type="checkbox"] + label:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0.25rem; left: 0;
+    width: 1rem;
+    height: 1rem;
+    border: 1px solid #ebebeb;
+    background-color: #fff;
+    border-radius: 3px;
+    transition: background-color .2s, border-color .2s;
+}
+.comment-form input[type="checkbox"] + label:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0.25rem; left: 0;
+    width: 1rem;
+    height: 1rem;
+    background: center / 1rem 1rem no-repeat url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMy41IDhsMyAzbDYgLTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0ZGRiIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48L3N2Zz4=")
+}
+.comment-form input[type="checkbox"]:checked + label:before {
+    border-color: var(--main-color, #09f);
+    background-color: var(--main-color, #09f);
+}

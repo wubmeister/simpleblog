@@ -1,0 +1,30 @@
+*, :before, :after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+    line-height: 1.5;
+    background-color: var(--page-background, #FFF);
+    color: var(--text-color, #222);
+}
+
+body, button, input, select, textarea {
+    font-family: var(--body-font, serif);
+    font-size: 1em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    line-height: 1.125;
+}
+
+figure {
+    margin: 0;
+}

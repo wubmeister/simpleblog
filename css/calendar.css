@@ -1,0 +1,69 @@
+.calendar {
+    margin: 1rem 0;
+}
+.calendar .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.calendar .calnav {
+    -webkit-appearance: none;
+    margin: 0;
+    border: none;
+    border-radius: 50%;
+    background: none;
+    width: 2rem;
+    height: 2rem;
+    font-size: .625rem;
+    text-align: center;
+    color: var(--counter-color);
+    line-height: 1;
+    padding: .6875rem 0;
+    cursor: pointer;
+
+    transition: background-color .2s;
+}
+.calendar .calnav:hover {
+    background-color: rgba(var(--counter-color-rgb), .12);
+}
+
+.calendar table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .875em;
+    margin-top: .5rem;
+}
+.calendar table th,
+.calendar table td {
+    width: 14.28571%;
+    text-align: center;
+}
+.calendar table th {
+    padding: .5em 0;
+    font-size: .75rem;
+    opacity: .5;
+}
+.calendar .day {
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    line-height: 2;
+    border-radius: 50%;
+    opacity: .75;
+}
+.calendar .day.today {
+    background-color: var(--counter-color);
+    color: var(--main-color);
+    opacity: 1;
+}
+.calendar .day.othermonth {
+    opacity: .25;
+}
+.calendar .day.filled {
+    opacity: 1;
+    font-weight: var(--font-weight-bold);
+    transition: background-color .2s;
+}
+.calendar .day.filled:hover {
+    background-color: rgba(var(--counter-color-rgb), .12);
+}

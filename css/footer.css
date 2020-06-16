@@ -1,0 +1,34 @@
+.footer {
+    padding: 1.5rem .5rem;
+    background-color: var(--main-color, #ebebeb);
+    color: var(--counter-color);
+    font-family: var(--text-font, sans-serif);
+}
+
+.footer a[href] {
+    color: var(--counter-color);
+    opacity: 0.8;
+}
+.footer a[href]:hover {
+    opacity: 1;
+}
+
+.footer h5 {
+    font-size: 1.125em;
+    margin-bottom: 0;
+    color: var(--counter-color);
+}
+
+.rockbottom {
+    background-color: var(--main-color-soft, #ebebeb);
+    padding: 1rem;
+    font-size: .875rem;
+    color: rgba(var(--text-color-rgb), 0.5);
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .footer {
+        padding: 3rem 0;
+    }
+}

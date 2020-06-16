@@ -1,0 +1,23 @@
+ul.links {
+    margin: 1em 0;
+    padding: 0;
+    list-style: none;
+}
+ul.links li {
+    display: block;
+    padding: .25rem 0;
+}
+ul.links li a[href] {
+    /*display: inline-block;*/
+    text-decoration: none;
+    color: inherit;
+    opacity: .8;
+
+    border-bottom: 1px solid transparent;
+
+    transition: opacity .2s, border-bottom-color .2s;
+}
+ul.links li a[href]:hover {
+    opacity: 1;
+    border-bottom-color: currentColor;
+}
