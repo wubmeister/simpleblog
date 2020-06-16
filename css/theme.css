@@ -20,17 +20,21 @@ html {
     --theme-secondary-color: #F55C42;
     --theme-secondary-color-hover: #DB533B;
     --theme-secondary-counter-color: white;
+    --theme-dark-gray-color: rgb(159, 159, 162);
+    --theme-dark-gray-color-hover: rgb(128, 128, 131);
+    --theme-dark-gray-counter-color: white;
 }
 
 
 html {
     /*--nav-background: #f4e04d;*/
-    --nav-text-color: rgba(63, 63, 68, 1);
+    --nav-text-color: rgba(63, 63, 68, .75);
     /*--nav-subheader-background
     --nav-subnav-background*/
     --nav-line-color: rgba(63, 63, 68, 0.1);
     --nav-active-color: #E7CA0E;
-    --nav-hover-background: rgba(63, 63, 68, 0.05);
+    --nav-hover-background: transparent;
+    --nav-hover-color: rgba(63, 63, 68, 1);
     /*--nav-underline-color*/
     /*--nav-dropdown-background: rgb(63, 63, 68);
     --nav-dropdown-text-color: white;*/
@@ -45,6 +49,9 @@ html {
 .nav-dropdown li a {
     font-weight: 700;
 }
+.nav-dropdown > ul > li > a {
+    color: var(--text-color);
+}
 
 .nav-drilldown {
     --nav-background: #f4e04d;
@@ -54,6 +61,7 @@ html {
     --nav-line-color: rgba(63, 63, 68, 0.1);
     --nav-active-color: rgba(63, 63, 68, 1);
     --nav-hover-background: rgba(255, 255, 255, 0.05);
+    --nav-hover-color: rgba(63, 63, 68, .7);
     /*--nav-underline-color*/
     --nav-dropdown-background: rgb(63, 63, 68);
     --nav-dropdown-text-color: white;

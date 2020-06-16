@@ -3,8 +3,9 @@ figure img {
     width: 100%;
 }
 figcaption {
+    font-size: .875rem;
     font-style: italic;
-    color: #888;
+    color: var(--theme-dark-gray-color, #888);
     margin-top: .25rem;
     text-align: center;
 }
@@ -85,19 +86,21 @@ blockquote cite:before {
 
 .wp-block-pullquote blockquote {
     text-align: center;
-    padding-top: 3.5rem;
+    padding-top: 4rem;
     padding-bottom: 3rem;
     border-top: 1px solid #ebebeb;
     border-bottom: 1px solid #ebebeb;
 }
 .wp-block-pullquote blockquote:before {
     top: 2.5rem; left: 0; right: 0;
-
+}
+.wp-block-pullquote blockquote p {
+    font-size: 2rem;
+    margin-bottom: .25rem;
 }
 
 .wp-block-verse {
     margin: 1rem 0;
-    padding-left: 1rem;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 1rem;
     font-style: italic;

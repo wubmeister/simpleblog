@@ -15,6 +15,10 @@
     font-size: 1.5rem;
 }
 
+.article > .container > .body :first-child {
+    margin-top: 0;
+}
+
 @media screen and (min-width: 576px) {
     .article > .container {
         padding: 2rem;
@@ -27,5 +31,6 @@
     }
     .article > .container > .body {
         font-size: 1.125rem;
+        line-height: 1.75;
     }
 }

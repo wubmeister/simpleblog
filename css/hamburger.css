@@ -1,0 +1,45 @@
+
+@media screen and (min-width: 768px) {
+    .hamburger {
+        display: none;
+    }
+}
+
+
+.hamburger {
+    position: absolute;
+    top: 1.5rem;
+    width: 1.25rem;
+    height: 1rem;
+    right: 1.5rem;
+    z-index: 2001;
+}
+.hamburger span {
+    position: absolute;
+    left: 0; right: 0;
+    height: 2px;
+    background-color: var(--text-color);
+    top: calc(50% - 1px);
+    transition: opacity .5s, transform .5s;
+}
+.hamburger span:first-child {
+    top: 0;
+}
+.hamburger span:last-child {
+    top: auto;
+    bottom: 0;
+}
+
+.hamburger.open span {
+    opacity: 0;
+    /*transform: rotate(360deg);*/
+    transition: opacity .3s, transform .5s cubic-bezier(.65, 0, 0, 1);
+}
+.hamburger.open span:first-child {
+    transform: translateY(.4375rem) rotate(135deg);
+    opacity: 1;
+}
+.hamburger.open span:last-child {
+    transform: translateY(-.4375rem) rotate(-135deg);
+    opacity: 1;
+}

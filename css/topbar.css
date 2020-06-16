@@ -4,7 +4,6 @@
     z-index: 1000;
     transition: background-color .2s;
     color: var(--counter-color, var(--text-color));
-    background-color: rgba(var(--page-background-rgb), 0.9);
 }
 .topbar.scrolled {
     background-color: rgba(var(--page-background-rgb), 0.9);
@@ -46,49 +45,6 @@
         display: none;
     }
 }
-@media screen and (min-width: 768px) {
-    .topbar .hamburger {
-        display: none;
-    }
-}
-
-
-/*.topbar .hamburger {
-    position: absolute;
-    top: 1.5rem;
-    width: 1.25rem;
-    height: 1rem;
-    right: 1.5rem;
-}
-.topbar .hamburger span {
-    position: absolute;
-    left: 0; right: 0;
-    height: 2px;
-    background-color: var(--text-color);
-    top: calc(50% - 1px);
-    transition: opacity .5s, transform .5s;
-}
-.topbar .hamburger span:first-child {
-    top: 0;
-}
-.topbar .hamburger span:last-child {
-    top: auto;
-    bottom: 0;
-}
-
-.topbar .hamburger.open span {
-    opacity: 0;
-    transform: rotate(360deg);
-    transition: opacity .5s, transform .5s cubic-bezier(0.250, 0.250, 0.515, 1.315);
-}
-.topbar .hamburger.open span:first-child {
-    transform: translateY(.4375rem) rotate(315deg);
-    opacity: 1;
-}
-.topbar .hamburger.open span:last-child {
-    transform: translateY(-.4375rem) rotate(405deg);
-    opacity: 1;
-}*/
 
 .dimmer {
     position: fixed;
