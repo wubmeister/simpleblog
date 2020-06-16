@@ -1,0 +1,2 @@
+# simpleblog
+Simple WordPress theme
