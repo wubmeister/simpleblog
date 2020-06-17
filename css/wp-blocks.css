@@ -18,22 +18,20 @@ hr {
 
 blockquote {
     position: relative;
-    margin: 1rem 0;
-    padding: 0 1.5rem;
+    margin: 1.5rem 0;
+    padding: 0;
 }
 blockquote:before {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 5rem;
-    line-height: 1;
-    content: "\201D";
+    content: "";
     display: block;
     position: absolute;
-    top: 0em; left: -.25em;
-    opacity: .25;
+    top: 0; left: -1.5rem; bottom: 0;
+    width: 5px;
+    background-color: var(--theme-primary-color);
 }
 blockquote p {
     font-size: 1.25rem;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-top: 0;
     margin-bottom: .5rem;
 }
 blockquote cite {
@@ -76,28 +74,30 @@ blockquote cite:before {
     font-size: 1.25rem;
 }
 .has-large-font-size {
+    font-family: var(--headline-font, var(--body-font, serif));
+    font-weight: var(--font-weight-bold);
     font-size: 1.5rem;
 }
 .has-huge-font-size {
+    font-family: var(--headline-font, var(--body-font, serif));
+    font-weight: var(--font-weight-bold);
     font-size: 1.75rem;
 }
 
 
 .wp-block-pullquote blockquote {
     text-align: center;
-    padding-top: 3.5rem;
+    padding-top: 3rem;
     padding-bottom: 3rem;
-    border-top: 1px solid #ebebeb;
-    border-bottom: 1px solid #ebebeb;
+    border-top: 1px solid var(--theme-primary-color, #ebebeb);
+    border-bottom: 1px solid var(--theme-primary-color, #ebebeb);
 }
 .wp-block-pullquote blockquote:before {
-    top: 2.5rem; left: 0; right: 0;
-
+    display: none;
 }
 
 .wp-block-verse {
-    margin: 1rem 0;
-    padding-left: 1rem;
+    margin: 1.5rem 0;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 1rem;
     font-style: italic;
@@ -106,7 +106,7 @@ blockquote cite:before {
 .wp-block-columns {
     display: flex;
     flex-wrap: wrap;
-    margin: 1rem -.5rem;
+    margin: 1.5rem -.5rem;
 }
 .wp-block-columns .wp-block-column {
     flex-basis: 100%;
@@ -116,7 +116,7 @@ blockquote cite:before {
 .wp-block-media-text {
     display: flex;
     flex-wrap: wrap;
-    margin: 1rem -0.5rem;
+    margin: 1.5rem -0.5rem;
 }
 .wp-block-media-text__media,
 .wp-block-media-text__content {
@@ -140,6 +140,7 @@ blockquote cite:before {
     position: absolute;
     left: 0;
     padding: 1rem;
+    width: 100%;
 }
 .alignfull:after {
     content: "";
@@ -165,7 +166,7 @@ figure.alignright {
 }
 
 .wp-block-image {
-    margin: 1rem 0;
+    margin: 1.5rem 0;
 }
 
 .wp-block-gallery ul {
@@ -179,15 +180,31 @@ figure.alignright {
     padding: .5rem;
     width: 100%
 }
+.wp-block-gallery li img {
+    width: 100%
+}
 .wp-block-code {
-    background-color: #ebebeb;
-    padding: 1rem;
+    background-color: #fafafa;
+    padding: 1.5rem;
 }
 .wp-block-code code {
     display: block;
     font-family: Menlo, 'Courier New', Courier, monospace;
     font-size: 13px;
     line-height: 1.5;
+}
+
+.wp-block-file {
+    font-family: var(--text-font, sans-serif);
+    padding: 1rem 1.5rem;
+    background-color: #fafafa;
+}
+.wp-block-file a:not(.wp-block-file__button) {
+    text-decoration: none;
+    color: var(--link-color);
+}
+.wp-block-file a:not(.wp-block-file__button):hover {
+    color: var(--link-color-hover);
 }
 /*.wp-block-code code {
     background-color: #ebebeb;
@@ -196,7 +213,7 @@ figure.alignright {
 
 .wp-block-group {
     padding: 2rem;
-    margin: 1rem 0;
+    margin: 1.5rem 0;
     border-radius: 3px;
 }
 .wp-block-group :first-child {
@@ -215,7 +232,8 @@ figure.alignright {
 .wp-block-button {
     display: inline-block;
 }
-.wp-block-button__link {
+.wp-block-button__link,
+.wp-block-file__button {
     -webkit-appearance: none;
     display: block;
     margin: 0;
@@ -231,10 +249,20 @@ figure.alignright {
     transition: background-color .2s;
     cursor: pointer;
 }
-.wp-block-button__link:not(.has-background) {
+.wp-block-file__button {
+    display: inline-block;
+    color: var(--theme-primary-counter-color, white);
+    padding: .5em 1.5em;
+    margin-top: -.5rem;
+    margin-bottom: -.5rem;
+    margin-left: 1rem;
+}
+.wp-block-button__link:not(.has-background),
+.wp-block-file__button {
     background-color: var(--theme-primary-color, #09f);
 }
-.wp-block-button__link:not(.has-background):hover {
+.wp-block-button__link:not(.has-background):hover,
+.wp-block-file__button:hover {
     background-color: var(--theme-primary-color-hover, #2af);
 }
 .wp-block-button__link.has-bright-blue-background-color:hover {
