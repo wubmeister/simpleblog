@@ -1,6 +1,6 @@
 <?php if (has_post_thumbnail()): ?>
-<header class="large secondary cover">
-    <div class="image opacity-80" style="background-image:url(<?php echo get_the_post_thumbnail_url(); ?>)"></div>
+<header class="large primary cover with-image">
+    <div class="image opacity-70" style="background-image:url(<?php echo get_the_post_thumbnail_url(); ?>)"></div>
 <?php else: ?>
 <header class="large primary cover">
 <?php endif; ?>

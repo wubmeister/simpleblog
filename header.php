@@ -88,7 +88,7 @@
 
     <a class="hamburger" data-offcanvas-trigger><span></span><span></span><span></span></a>
 
-    <div class="primary topbar">
+    <div class="primary topbar<?php if (is_singular()) echo ' inverted'; ?>">
         <div class="large container">
             <div class="brandbox"></div>
             <a class="brand" href="/">Simple Blog</a>

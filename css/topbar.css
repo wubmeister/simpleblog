@@ -8,6 +8,16 @@
 body.admin-bar .topbar {
     top: 32px;
 }
+.topbar.inverted:not(.scrolled) {
+    color: white;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0))
+}
+.topbar.inverted:not(.scrolled) .nav > ul > li > a {
+    color: white;
+}
+.topbar.inverted:not(.scrolled) .social-link i {
+    color: white !important;
+}
 .topbar.scrolled {
     background-color: rgba(var(--page-background-rgb), 0.9);
     color: var(--text-color);

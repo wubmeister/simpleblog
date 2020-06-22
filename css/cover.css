@@ -7,6 +7,10 @@
     background-position: center;
     background-size: cover;
 }
+.cover.with-image,
+.cover.with-image h1 {
+    color: white;
+}
 .cover.image-contain {
     background-repeat: no-repeat;
     background-size: contain;
@@ -78,6 +82,9 @@
 }
 .cover > .image.opacity-80 {
     opacity: .8;
+}
+.cover > .image.opacity-70 {
+    opacity: .7;
 }
 
 @media screen and (min-width: 768px) {
