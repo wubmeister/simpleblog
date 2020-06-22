@@ -1,0 +1,23 @@
+Settings:
+
+- Brand image
+- Brand image footer
+- Primary color
+- Secondary color
+- Text color
+- Link color
+- Headline font (default: Playfair Display)
+- Body/serif font (default: Merriweather)
+- Text/sans serif font (default: Lato)
+
+Derived settings:
+
+- Link color:                   primary_color
+- Link hover color:             link_color - lab(10, 0, 0)
+- Primary hover color:          primary_color - lab(10, 0, 0)
+- Primary soft color:           primary_color * .2 + white * .8
+- Primary soft hover color:     primary_soft_color - lab(10, 0, 0)
+- Secondary hover color:        secondary_color - lab(10, 0, 0)
+- Secondary soft color:         secondary_color * .2 + white * .8
+- Secondary soft hover color:   secondary_soft_color - lab(10, 0, 0)
+- Nav colors:                   based on primary_color
