@@ -5,6 +5,9 @@
     transition: background-color .2s;
     color: var(--counter-color, var(--text-color));
 }
+body.admin-bar .topbar {
+    top: 32px;
+}
 .topbar.scrolled {
     background-color: rgba(var(--page-background-rgb), 0.9);
     color: var(--text-color);

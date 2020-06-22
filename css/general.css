@@ -1,0 +1,21 @@
+.screen-reader-text {
+    display: none;
+}
+
+.post-meta {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    font-size: .875rem;
+    margin-top: -1em;
+    opacity: .75;
+}
+
+.post-meta .meta-wrapper {
+    margin-right: 1rem;
+}
+
+.post-meta a[href] {
+    color: inherit;
+}

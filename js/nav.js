@@ -23,6 +23,8 @@ const Nav = {
         });
     },
     Drilldown: element => {
+        if (!element) return;
+
         let currLi;
         let backButton;
         let navTitle;
