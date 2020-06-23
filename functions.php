@@ -1,36 +1,52 @@
 <?php
 
 add_theme_support( 'post-thumbnails' );
+add_theme_support( 'custom-header' );
 
-// add_action( 'admin_init', 'simpleblog_admin_init' );
+function simpleblog_customize_register($wp_customize) {
+    $wp_customize->add_setting(
+		'cover_text',
+		[
+			'type' => 'theme_mod',
+			'capability' => 'edit_theme_options',
+			'transport' => 'refresh',
+		]
+	);
+    $wp_customize->add_setting(
+		'typewriter',
+		[
+			'type' => 'theme_mod',
+			'capability' => 'edit_theme_options',
+			'transport' => 'refresh',
+		]
+	);
+	$wp_customize->add_section(
+		'content',
+		[
+			'title' => __('Content'),
+			'capability' => 'edit_theme_options',
+		]
+	);
+    $wp_customize->add_control(
+		'cover_text',
+		[
+			'type' => 'text',
+			'section' => 'content',
+			'label' => __('Cover text'),
+		]
+	);
+    $wp_customize->add_control(
+		'typewriter',
+		[
+			'type' => 'textarea',
+			'section' => 'content',
+			'label' => __('Typewriter'),
+			'description' => __('Words that will be shown in your homepage cover with a typewriter effect. Enter words separated by commas'),
+		]
+	);
+}
 
-// function simpleblog_admin_init() {
-//     add_settings_section (
-//         'simpleblog_theme_settings',
-//         'Theme settings',
-//         function () {
-//             echo '<p>Theme settings</p>';
-//         },
-//         'Reading'
-//     );
-
-//     add_settings_field (
-//         'simpleblog_theme_color',
-//         'Theme color',
-//         function () {
-//             echo '<p>I am the setting!</p>';
-//         },
-//         'Reading',
-//         'simpleblog_theme_settings'//,
-//         // array $args = array ()
-//     );
-
-//     register_setting (
-//         'Reading',
-//         'simpleblog_theme_color' // ,
-//         // array $args = array ()
-//     );
-// }
+add_action( 'customize_register', 'simpleblog_customize_register' );
 
 function simpleblog_get_post_meta( $post_id = null, $location = 'single-top' ) {
 

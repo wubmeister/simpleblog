@@ -15,10 +15,30 @@ get_header(); ?>
 
         <?php if (is_home() && is_front_page()): ?>
 
-            <header class="primary  cover align-left" style="background-image: url(<?php echo get_template_directory_uri(); ?>/image.php?width=1500&height=500&color=f4e04d);">
+            <?php
+            $hi = get_header_image();
+            if (!$hi) {
+                $hi = get_template_directory_uri() . '/image.php?width=1500&height=500&color=f4e04d';
+            }
+            ?>
+
+            <header class="primary cover image-contain align-left" style="background-image: url(<?php echo $hi; ?>);">
                 <div class="large container">
                     <div class="caption">
-                        <h1><?php echo get_bloginfo('name'); ?></h1>
+                        <h1>
+                            <?php
+                            $ct = trim(get_theme_mod('cover_text'));
+                            echo $ct ? $ct : get_bloginfo('name');
+                            ?>
+                            <?php
+                            $tw = trim(get_theme_mod('typewriter'));
+                            if ($tw) {
+                                echo '<span id="cover-typewriter"><ul><li>' .
+                                    preg_replace('/\s*,\s*/', '</li><li>', $tw) .
+                                    '</li></ul></span>';
+                            }
+                            ?>
+                        </h1>
                         <p class="subtitle"><?php echo get_bloginfo('description'); ?></p>
                     </div>
                 </div>

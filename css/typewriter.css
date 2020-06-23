@@ -1,0 +1,35 @@
+.tw {
+    box-sizing: border-box;
+    display: inline-block;
+    position: relative;
+    margin: 0;
+    padding: 0 .125em 0 0;
+    list-style: none;
+    line-height: 1.125;
+    min-height: 1.125em;
+    vertical-align: baseline;
+}
+@keyframes tw-blink {
+    0% { opacity: 0; }
+    40% { opacity: 0; }
+    50% { opacity: .5; }
+    90% { opacity: .5; }
+    100% { opacity: 0; }
+}
+.tw:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--text-color);
+    animation: tw-blink 1s  infinite;
+}
+.tw li {
+    display: none;
+}
+.tw li span {
+    display: none;
+}

@@ -13,6 +13,8 @@
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no"/>
 
+    <title><?php bloginfo('name'); ?></title>
+
     <?php wp_head(); ?>
 
     <?php $themeBase = get_template_directory_uri(); ?>

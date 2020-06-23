@@ -1,6 +1,6 @@
 
     <footer class="gray rockbottom">
-        &copy; 2020 Simple Blog &nbsp;&nbsp;&bull;&nbsp;&nbsp; Alle rechten voorbehouden
+        &copy; 2020 <?php bloginfo('name'); ?> &nbsp;&nbsp;&bull;&nbsp;&nbsp; <?php echo __('All rights reserved'); ?>
     </footer>
 
     <div class="dimmer"></div>
@@ -9,6 +9,8 @@
 
     <script src="<?php echo $themeBase; ?>/js/nav.js"></script>
     <script src="<?php echo $themeBase; ?>/js/offcanvas.js"></script>
+    <link rel="stylesheet" href="<?php echo $themeBase; ?>/css/typewriter.css"/>
+    <script src="<?php echo $themeBase; ?>/js/typewriter.js"></script>
     <script>
         Nav.Drilldown(document.querySelector(".nav-drilldown"));
 
@@ -122,6 +124,13 @@
                     }
                 }
             });
+        }
+
+        {
+            let twElement = document.getElementById('cover-typewriter');
+            if (twElement) {
+                tw(twElement.querySelector('ul'));
+            }
         }
     </script>
 </body>
