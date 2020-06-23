@@ -42,6 +42,20 @@
             --theme-dark-gray-color-hover: rgb(128, 128, 131);
             --theme-dark-gray-counter-color: white;
         }
+
+        .primarysoft {
+            --main-color: <?php echo $colors['primarysoft_color']; ?>;
+            --main-color-hover: <?php echo $colors['primarysoft_color_hover']; ?>;
+            --counter-color: var(--text-color);
+            --counter-color-rgb: var(--text-color-rgb);
+        }
+
+        .secondarysoft {
+            --main-color: <?php echo $colors['secondarysoft_color']; ?>;
+            --main-color-hover: <?php echo $colors['secondarysoft_color_hover']; ?>;
+            --counter-color: var(--text-color);
+            --counter-color-rgb: var(--text-color-rgb);
+        }
     </style>
 
     <link rel="stylesheet" href="<?php echo $themeBase; ?>/css/theme.css" />

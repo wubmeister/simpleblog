@@ -20,6 +20,14 @@ class SimpleBlog_Color
     protected $hasHsl = false;
     protected $hasLab = false;
 
+    const rgb2xyzMatrix = [ 0.4360747,  0.3850649,  0.1430804,
+                            0.2225045,  0.7168786,  0.0606169,
+                            0.0139322,  0.0971045,  0.7141733 ];
+
+    const xyz2rgbMatrix = [ 3.1338561, -1.6168667, -0.4906146,
+                           -0.9787684,  1.9161415,  0.0334540,
+                            0.0719453, -0.2289914,  1.4052427 ];
+
     public function __construct($color = null)
     {
         if (is_string($color)) {
@@ -76,6 +84,20 @@ class SimpleBlog_Color
     {
         if (preg_match('/rgba?\s*\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*(,\s*((\d*\.)?\d+)\s*)?\)/', $rgb, $match)) {
             $this->setRgbValue(
+                (int)$match[1],
+                (int)$match[2],
+                (int)$match[3],
+                count($match) > 4 && $match[4] ? (float)$match[5] : 1
+            );
+        } else {
+            throw new Exception("Invalid rgb(a) value: '{$rgb}'.");
+        }
+    }
+
+    public function setHslStringValue($rgb)
+    {
+        if (preg_match('/hsla?\s*\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*(,\s*((\d*\.)?\d+)\s*)?\)/', $rgb, $match)) {
+            $this->setHslValue(
                 (int)$match[1],
                 (int)$match[2],
                 (int)$match[3],
@@ -366,6 +388,8 @@ class SimpleBlog_Color
             $this->green = $min;
             $this->blue = $max - ($delta * ($this->hue - 180) / 60);
         }
+
+        $this->hasRgb = true;
     }
 
     protected function calcHslFromRgb()
@@ -409,14 +433,87 @@ class SimpleBlog_Color
                 }
             }
         }
+
+        $this->hasHsl = true;
+    }
+
+    protected static function correctChannel($c) {
+        if ($c > 0.04045)
+            $c = pow(($c + 0.055) / 1.055, 2.4);
+        else
+            $c = $c / 12.92;
+        return $c;
+    }
+
+    protected static function correctChannelInv($c) {
+        if ($c > 0.0031308)
+            $c = pow($c, 1 / 2.4) * 1.055 - 0.055;
+        else
+            $c = $c * 12.92;
+        return min(1, max(0, $c));
+    }
+
+    protected static function f($t) {
+        $d = 6 / 29;
+        $d3 = $d * $d * $d;
+
+        if ($t > $d3) return pow($t, 1/3);
+        return ($t / (3 * $d3)) + (4 / 29);
+    }
+
+    protected static function fInv($t) {
+        $d = 6/29;
+        $d2 = $d * $d;
+        if ($t > $d) return $t * $t * $t;
+        return ($t - 4 / 29) * 3 * $d2;
+    }
+
+    protected static function rgbToXyz($r, $g, $b)
+    {
+        $m = self::rgb2xyzMatrix;
+
+        $r = self::correctChannel($r / 255);
+        $g = self::correctChannel($g / 255);
+        $b = self::correctChannel($b / 255);
+
+        return [
+            'x' => $r * $m[0] + $g * $m[1] + $b * $m[2],
+            'y' => $r * $m[3] + $g * $m[4] + $b * $m[5],
+            'z' => $r * $m[6] + $g * $m[7] + $b * $m[8]
+        ];
+    }
+
+    protected static function labToXyz($l, $a, $b)
+    {
+        return [
+            'x' => 0.964212 * self::fInv(($l + 16) / 116 + $a / 500),
+            'y' => self::fInv(($l + 16) / 116),
+            'z' => 0.825188 * self::fInv(($l + 16) / 116 - $b / 200)
+        ];
     }
 
     protected function calcRgbFromLab()
     {
+        $xyz = self::labToXyz($this->l, $this->a, $this->b);
+
+        $m = self::xyz2rgbMatrix;
+
+        $this->red = round(255 * self::correctChannelInv($xyz['x'] * $m[0] + $xyz['y'] * $m[1] + $xyz['z'] * $m[2]));
+        $this->green = round(255 * self::correctChannelInv($xyz['x'] * $m[3] + $xyz['y'] * $m[4] + $xyz['z'] * $m[5]));
+        $this->blue = round(255 * self::correctChannelInv($xyz['x'] * $m[6] + $xyz['y'] * $m[7] + $xyz['z'] * $m[8]));
+
+        $this->hasRgb = true;
     }
 
     protected function calcLabFromRgb()
     {
+        $xyz = self::rgbToXyz($this->red, $this->green, $this->blue);
+
+        $this->l = 116 * self::f($xyz['y']) - 16;
+        $this->a = 500 * (self::f($xyz['x'] / 0.964212) - self::f($xyz['y']));
+        $this->b = 200 * (self::f($xyz['y']) - self::f($xyz['z'] / 0.825188));
+
+        $this->hasLab = true;
     }
 
     protected function calcRgb()
@@ -429,6 +526,7 @@ class SimpleBlog_Color
             $this->red = 0;
             $this->green = 0;
             $this->blue = 0;
+            $this->hasRgb = true;
         }
     }
 

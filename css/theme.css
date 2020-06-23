@@ -52,25 +52,11 @@ html {
     --counter-color-rgb: var(--theme-primary-counter-color-rgb);
 }
 
-.primarysoft {
-    --main-color: #FDF9DB;
-    --main-color-hover: #FBF3B8;
-    --counter-color: var(--text-color);
-    --counter-color-rgb: var(--text-color-rgb);
-}
-
 .secondary {
     --main-color: var(--theme-secondary-color);
     --main-color-hover: var(--theme-secondary-color-hover);
     --counter-color: #FFF;
     --counter-color-rgb: 255, 255, 255;
-}
-
-.secondarysoft {
-    --main-color: #D7EAED;
-    --main-color-hover: #BACDD0;
-    --counter-color: var(--text-color);
-    --counter-color-rgb: var(--text-color-rgb);
 }
 
 .white {

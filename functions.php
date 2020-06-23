@@ -1,9 +1,11 @@
 <?php
 
+require_once "inc/settings.php";
+
 add_theme_support( 'post-thumbnails' );
 add_theme_support( 'custom-header' );
 
-function simpleblog_customize_register( $wp_customizer )
+function simpleblog_customize_register( $wp_customize )
 {
 	$sections = [
 		"content" => [
@@ -14,7 +16,7 @@ function simpleblog_customize_register( $wp_customizer )
 					"label" => __("Cover text"),
 				],
 				"cover_typewriter" => [
-					"type" => "text",
+					"type" => "textarea",
 					"label" => __("Cover typewriter"),
 				],
 			],
@@ -23,24 +25,24 @@ function simpleblog_customize_register( $wp_customizer )
 			"label" => __("Colors"),
 			"settings" => [
 				"page_bg_color" => [
-					"type" => "text",
+					"type" => "color",
 					"label" => __("Page background color"),
 				],
 				"primary_color" => [
-					"type" => "text",
+					"type" => "color",
 					"label" => __("Primary color"),
 				],
 				"secondary_color" => [
-					"type" => "text",
+					"type" => "color",
 					"label" => __("Secondary color"),
 				],
 				"text_color" => [
-					"type" => "text",
+					"type" => "color",
 					"label" => __("Text color"),
 					"default_value" => "#000000"
 				],
 				"link_color" => [
-					"type" => "text",
+					"type" => "color",
 					"label" => __("Link color"),
 				],
 			],
@@ -48,23 +50,28 @@ function simpleblog_customize_register( $wp_customizer )
 	];
 
 	foreach ($sections as $section_name => $section) {
-		$wp_customizer->add_section($section_name, [
-			'title' => $section['label'],
-		]);
+		if ($section_name != 'colors') {
+			$wp_customize->add_section($section_name, [
+				'title' => $section['label'],
+			]);
+		}
 
 		foreach ($section['settings'] as $setting_name => $setting) {
+
+			$sn = "simpleblog_{$setting_name}";
 			$args = [];
 			if ($setting['default_value']) $args['default'] = $setting['default_value'];
 			if ($setting['sanitize_callback']) $args['sanitize_callback'] = $setting['sanitize_callback'];
-			$wp_customizer->add_setting($setting_name, $args);
+			$wp_customize->add_setting($sn, $args);
 
 			$args = [
 				'label' => $setting['label'],
 				'section' => $section_name,
 				'type' => $setting['type'],
+				'settings' => $sn
 			];
 			if ($setting['options']) $args['options'] = $setting['options'];
-			$wp_customizer->add_control($setting_name, $args);
+			$wp_customize->add_control($sn, $args);
 		}
 	}
 }

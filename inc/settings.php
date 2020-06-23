@@ -19,6 +19,7 @@ function simpleblog_generate_settings_cache($pageBgColor, $primaryColor, $second
 
     */
 
+    if (!$pageBgColor) $pageBgColor = '#FFFFFF';
     if (!$primaryColor) $primaryColor = '#1B6CA8';
     if (!$secondaryColor) $secondaryColor = '#0A97B0';
     if (!$textColor) $textColor = '#000000';
@@ -84,9 +85,9 @@ function simpleblog_get_color_settings()
     $key = md5("{$pageBgColor}{$primaryColor}{$secondaryColor}{$textColor}{$linkColor}");
 
     $data = null;
-    if (file_exists(__DIR__ . '/settings_cache.php')) {
-        $data = include("settings_cache.php");
-    }
+    // if (file_exists(__DIR__ . '/settings_cache.php')) {
+    //     $data = include("settings_cache.php");
+    // }
 
     if (!$data || $data['key'] != $key) {
         $data = simpleblog_generate_settings_cache($pageBgColor, $primaryColor, $secondaryColor, $textColor, $linkColor);
