@@ -3,47 +3,70 @@
 add_theme_support( 'post-thumbnails' );
 add_theme_support( 'custom-header' );
 
-function simpleblog_customize_register($wp_customize) {
-    $wp_customize->add_setting(
-		'cover_text',
-		[
-			'type' => 'theme_mod',
-			'capability' => 'edit_theme_options',
-			'transport' => 'refresh',
-		]
-	);
-    $wp_customize->add_setting(
-		'typewriter',
-		[
-			'type' => 'theme_mod',
-			'capability' => 'edit_theme_options',
-			'transport' => 'refresh',
-		]
-	);
-	$wp_customize->add_section(
-		'content',
-		[
-			'title' => __('Content'),
-			'capability' => 'edit_theme_options',
-		]
-	);
-    $wp_customize->add_control(
-		'cover_text',
-		[
-			'type' => 'text',
-			'section' => 'content',
-			'label' => __('Cover text'),
-		]
-	);
-    $wp_customize->add_control(
-		'typewriter',
-		[
-			'type' => 'textarea',
-			'section' => 'content',
-			'label' => __('Typewriter'),
-			'description' => __('Words that will be shown in your homepage cover with a typewriter effect. Enter words separated by commas'),
-		]
-	);
+function simpleblog_customize_register( $wp_customizer )
+{
+	$sections = [
+		"content" => [
+			"label" => __("Content"),
+			"settings" => [
+				"cover_text" => [
+					"type" => "text",
+					"label" => __("Cover text"),
+				],
+				"cover_typewriter" => [
+					"type" => "text",
+					"label" => __("Cover typewriter"),
+				],
+			],
+		],
+		"colors" => [
+			"label" => __("Colors"),
+			"settings" => [
+				"page_bg_color" => [
+					"type" => "text",
+					"label" => __("Page background color"),
+				],
+				"primary_color" => [
+					"type" => "text",
+					"label" => __("Primary color"),
+				],
+				"secondary_color" => [
+					"type" => "text",
+					"label" => __("Secondary color"),
+				],
+				"text_color" => [
+					"type" => "text",
+					"label" => __("Text color"),
+					"default_value" => "#000000"
+				],
+				"link_color" => [
+					"type" => "text",
+					"label" => __("Link color"),
+				],
+			],
+		],
+	];
+
+	foreach ($sections as $section_name => $section) {
+		$wp_customizer->add_section($section_name, [
+			'title' => $section['label'],
+		]);
+
+		foreach ($section['settings'] as $setting_name => $setting) {
+			$args = [];
+			if ($setting['default_value']) $args['default'] = $setting['default_value'];
+			if ($setting['sanitize_callback']) $args['sanitize_callback'] = $setting['sanitize_callback'];
+			$wp_customizer->add_setting($setting_name, $args);
+
+			$args = [
+				'label' => $setting['label'],
+				'section' => $section_name,
+				'type' => $setting['type'],
+			];
+			if ($setting['options']) $args['options'] = $setting['options'];
+			$wp_customizer->add_control($setting_name, $args);
+		}
+	}
 }
 
 add_action( 'customize_register', 'simpleblog_customize_register' );
