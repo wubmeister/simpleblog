@@ -280,7 +280,7 @@ class SimpleBlog_Color
     public function getLuminocity()
     {
         if (!$this->hasRgb) $this->calcRgb();
-        return round(0.21 * $this->red + 0.72 * $this->green + 0.07  * $this->blue);
+        return round(100 * (0.21 * $this->red + 0.72 * $this->green + 0.07  * $this->blue) / 255);
     }
 
     public function getHexString($withHash = true, $withAlpha = false)

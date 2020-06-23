@@ -1,36 +1,75 @@
 <?php
 
 add_theme_support( 'post-thumbnails' );
+add_theme_support( 'custom-header' );
 
-// add_action( 'admin_init', 'simpleblog_admin_init' );
+function simpleblog_customize_register( $wp_customizer )
+{
+	$sections = [
+		"content" => [
+			"label" => __("Content"),
+			"settings" => [
+				"cover_text" => [
+					"type" => "text",
+					"label" => __("Cover text"),
+				],
+				"cover_typewriter" => [
+					"type" => "text",
+					"label" => __("Cover typewriter"),
+				],
+			],
+		],
+		"colors" => [
+			"label" => __("Colors"),
+			"settings" => [
+				"page_bg_color" => [
+					"type" => "text",
+					"label" => __("Page background color"),
+				],
+				"primary_color" => [
+					"type" => "text",
+					"label" => __("Primary color"),
+				],
+				"secondary_color" => [
+					"type" => "text",
+					"label" => __("Secondary color"),
+				],
+				"text_color" => [
+					"type" => "text",
+					"label" => __("Text color"),
+					"default_value" => "#000000"
+				],
+				"link_color" => [
+					"type" => "text",
+					"label" => __("Link color"),
+				],
+			],
+		],
+	];
 
-// function simpleblog_admin_init() {
-//     add_settings_section (
-//         'simpleblog_theme_settings',
-//         'Theme settings',
-//         function () {
-//             echo '<p>Theme settings</p>';
-//         },
-//         'Reading'
-//     );
+	foreach ($sections as $section_name => $section) {
+		$wp_customizer->add_section($section_name, [
+			'title' => $section['label'],
+		]);
 
-//     add_settings_field (
-//         'simpleblog_theme_color',
-//         'Theme color',
-//         function () {
-//             echo '<p>I am the setting!</p>';
-//         },
-//         'Reading',
-//         'simpleblog_theme_settings'//,
-//         // array $args = array ()
-//     );
+		foreach ($section['settings'] as $setting_name => $setting) {
+			$args = [];
+			if ($setting['default_value']) $args['default'] = $setting['default_value'];
+			if ($setting['sanitize_callback']) $args['sanitize_callback'] = $setting['sanitize_callback'];
+			$wp_customizer->add_setting($setting_name, $args);
 
-//     register_setting (
-//         'Reading',
-//         'simpleblog_theme_color' // ,
-//         // array $args = array ()
-//     );
-// }
+			$args = [
+				'label' => $setting['label'],
+				'section' => $section_name,
+				'type' => $setting['type'],
+			];
+			if ($setting['options']) $args['options'] = $setting['options'];
+			$wp_customizer->add_control($setting_name, $args);
+		}
+	}
+}
+
+add_action( 'customize_register', 'simpleblog_customize_register' );
 
 function simpleblog_get_post_meta( $post_id = null, $location = 'single-top' ) {
 

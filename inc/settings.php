@@ -24,31 +24,40 @@ function simpleblog_generate_settings_cache($pageBgColor, $primaryColor, $second
     if (!$textColor) $textColor = '#000000';
     if (!$linkColor) $linkColor = $primaryColor;
 
+    $pbg = new SimpleBlog_Color($pageBgColor);
     $pc = new SimpleBlog_Color($primaryColor);
     $sc = new SimpleBlog_Color($secondaryColor);
     $tc = new SimpleBlog_Color($textColor);
     $lc = new SimpleBlog_Color($linkColor);
 
+    $white = new SimpleBlog_Color("#FFF");
+
     $lcHover = $lc->withL($lc->getL() - 10);
     $pcHover = $pc->withL($pc->getL() - 10);
-    $pcSoft = $pc->mixedWith(new SimpleBlog_Color("#FFF"), 0.8);
+    $pcSoft = $pc->mixedWith($white, 0.8);
     $pcSoftHover = $pcSoft->withL($pcSoft->getL() - 10);
     $scHover = $sc->withL($sc->getL() - 10);
-    $scSoft = $sc->mixedWith(new SimpleBlog_Color("#FFF"), 0.8);
+    $scSoft = $sc->mixedWith($white, 0.8);
     $scSoftHover = $scSoft->withL($scSoft->getL() - 10);
 
     $data = [
         'key' => md5("{$pageBgColor}{$primaryColor}{$secondaryColor}{$textColor}{$linkColor}"),
-        'page_bg_color' => $pageBgColor,
+        'page_bg_color' => $pbg->getRgbString(),
+        'page_bg_color_rgb' => $pbg->getRawRgbString(),
         'primary_color' => $pc->getRgbString(),
         'primary_color_hover' => $pcHover->getRgbString(),
+        'primary_counter_color' => $pc->getLuminocity() <= 75 ? $white->getRgbString() : $tc->getRgbString(),
+        'primary_counter_color_rgb' => $pc->getLuminocity() <= 75 ? $white->getRawRgbString() : $tc->getRawRgbString(),
         'primarysoft_color' => $pcSoft->getRgbString(),
         'primarysoft_color_hover' => $pcSoftHover->getRgbString(),
         'secondary_color' => $sc->getRgbString(),
         'secondary_color_hover' => $scHover->getRgbString(),
+        'secondary_counter_color' => $sc->getLuminocity() <= 75 ? $white->getRgbString() : $tc->getRgbString(),
+        'secondary_counter_color_rgb' => $sc->getLuminocity() <= 75 ? $white->getRawRgbString() : $tc->getRawRgbString(),
         'secondarysoft_color' => $scSoft->getRgbString(),
         'secondarysoft_color_hover' => $scSoftHover->getRgbString(),
         'text_color' => $tc->getRgbString(),
+        'text_color_rgb' => $tc->getRawRgbString(),
         'link_color' => $lc->getRgbString(),
         'link_color_hover' => $lcHover->getRgbString(),
     ];

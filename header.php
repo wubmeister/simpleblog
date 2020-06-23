@@ -17,6 +17,31 @@
 
     <?php $themeBase = get_template_directory_uri(); ?>
 
+    <style>
+        <?php $colors = simpleblog_get_color_settings(); ?>
+        html {
+            --text-color: <?php echo $colors['text_color']; ?>;
+            --text-color-rgb: <?php echo $colors['text_color_rgb']; ?>;
+            --link-color: <?php echo $colors['link_color']; ?>;
+            --link-color-hover: <?php echo $colors['link_color_hover']; ?>;
+            --page-background: <?php echo $colors['page_bg_color']; ?>;
+            --page-background-rgb: <?php echo $colors['page_bg_color_rgb']; ?>;
+
+            --theme-primary-color: <?php echo $colors['primary_color']; ?>;
+            --theme-primary-color-hover: <?php echo $colors['primary_color_hover']; ?>;
+            --theme-primary-counter-color: <?php echo $colors['primary_counter_color']; ?>;
+            --theme-primary-counter-color-rgb: <?php echo $colors['primary_counter_color_rgb']; ?>;
+            --theme-secondary-color: <?php echo $colors['secondary_color']; ?>;
+            --theme-secondary-color-hover: <?php echo $colors['secondary_color_hover']; ?>;
+            --theme-secondary-counter-color: <?php echo $colors['secondary_counter_color']; ?>;
+            --theme-secondary-counter-color-rgb: <?php echo $colors['secondary_counter_color_rgb']; ?>;
+
+            --theme-dark-gray-color: rgb(159, 159, 162);
+            --theme-dark-gray-color-hover: rgb(128, 128, 131);
+            --theme-dark-gray-counter-color: white;
+        }
+    </style>
+
     <link rel="stylesheet" href="<?php echo $themeBase; ?>/css/theme.css" />
 
     <link rel="stylesheet" href="<?php echo $themeBase; ?>/css/reset.css" />

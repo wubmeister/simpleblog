@@ -1,45 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;900&display=swap');
 
 html {
-    /*--body-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;*/
     --headline-font: 'Playfair Display', serif;
     --body-font: 'Merriweather', serif;
     --text-font: 'Lato', sans-serif;
-    --text-color: rgb(63, 63, 68);
-    --text-color-rgb: 63, 63, 68;
-    --font-weight-medium: 700;
-    --font-weight-bold: 700;
-    --link-color: #E7CA0E;
-    --link-color-hover: #B79D0B;
-    --page-background: white;
-    --page-background-rgb: 255, 255, 255;
-
-
-    --theme-primary-color: #f4e04d;
-    --theme-primary-color-hover: #E7CA0E;
-    --theme-primary-counter-color: rgb(54, 50, 17);
-    --theme-primary-counter-color-rgb: 54, 50, 17;
-    --theme-secondary-color: #3797a4;
-    --theme-secondary-color-hover: #0A7C89;
-    --theme-secondary-counter-color: white;
-    --theme-dark-gray-color: rgb(159, 159, 162);
-    --theme-dark-gray-color-hover: rgb(128, 128, 131);
-    --theme-dark-gray-counter-color: white;
 }
 
-
-html {
-    /*--nav-background: #f4e04d;*/
+.topbar .nav {
     --nav-text-color: rgba(var(--text-color-rgb), .75);
-    /*--nav-subheader-background
-    --nav-subnav-background*/
     --nav-line-color: rgba(var(--text-color-rgb), 0.1);
     --nav-active-color: var(--theme-secondary-color);
     --nav-hover-background: transparent;
     --nav-hover-color: rgba(var(--text-color-rgb), 1);
-    /*--nav-underline-color*/
-    /*--nav-dropdown-background: rgb(var(--text-color-rgb));
-    --nav-dropdown-text-color: white;*/
 
     --offcanvas-background: var(--theme-primary-color);
 }
@@ -58,13 +30,10 @@ html {
 .nav-drilldown {
     --nav-background: var(--theme-primary-color);
     --nav-text-color: rgba(var(--text-color-rgb), .7);
-    /*--nav-subheader-background
-    --nav-subnav-background*/
     --nav-line-color: rgba(var(--text-color-rgb), 0.1);
     --nav-active-color: rgba(var(--text-color-rgb), 1);
     --nav-hover-background: rgba(255, 255, 255, 0.05);
     --nav-hover-color: rgba(var(--text-color-rgb), .7);
-    /*--nav-underline-color*/
     --nav-dropdown-background: rgb(var(--text-color-rgb));
     --nav-dropdown-text-color: white;
 }
