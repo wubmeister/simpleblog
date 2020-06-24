@@ -1,13 +1,13 @@
-ul.links {
+ul.links, .footer ul {
     margin: 1em 0;
     padding: 0;
     list-style: none;
 }
-ul.links li {
+ul.links li, .footer ul li {
     display: block;
     padding: .25rem 0;
 }
-ul.links li a[href] {
+ul.links li a[href], .footer ul li a[href] {
     /*display: inline-block;*/
     text-decoration: none;
     color: inherit;
@@ -17,7 +17,7 @@ ul.links li a[href] {
 
     transition: opacity .2s, border-bottom-color .2s;
 }
-ul.links li a[href]:hover {
+ul.links li a[href]:hover, .footer ul li a[href]:hover {
     opacity: 1;
     border-bottom-color: currentColor;
 }

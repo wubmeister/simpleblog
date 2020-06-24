@@ -67,3 +67,101 @@
 .calendar .day.filled:hover {
     background-color: rgba(var(--counter-color-rgb), .12);
 }
+
+
+.calendar_wrap {
+    margin: 1rem -.5rem;
+    position: relative;
+}
+.calendar_wrap > nav {
+    position: absolute;
+    top: 0; right: 0; left: 0;
+    padding: 0 .5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.calendar_wrap .calnav {
+    -webkit-appearance: none;
+    margin: 0;
+    border: none;
+    border-radius: 50%;
+    background: none;
+    width: 2rem;
+    height: 2rem;
+    font-size: .625rem;
+    text-align: center;
+    color: var(--counter-color);
+    line-height: 1;
+    padding: .6875rem 0;
+    cursor: pointer;
+
+    transition: background-color .2s;
+}
+.calendar_wrap .calnav:hover {
+    background-color: rgba(var(--counter-color-rgb), .12);
+}
+
+.calendar_wrap .wp-calendar-nav-prev:before,
+.calendar_wrap .wp-calendar-nav-next:before {
+    display: inline-block;
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: .875rem;
+    opacity: .5;
+}
+.calendar_wrap .wp-calendar-nav-prev:before {
+    content: '\f053';
+}
+.calendar_wrap .wp-calendar-nav-next:before {
+    content: '\f054';
+}
+
+.calendar_wrap table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .875rem;
+    margin-top: .5rem;
+}
+.calendar_wrap table caption {
+    font-size: 1rem;
+    padding-bottom: .5rem;
+}
+.calendar_wrap table th,
+.calendar_wrap table td {
+    width: 14.28571%;
+    text-align: center;
+}
+.calendar_wrap table th {
+    padding: .5em 0;
+    font-size: .75rem;
+    opacity: .5;
+}
+.calendar_wrap td {
+    line-height: 2;
+}
+.calendar_wrap #today {
+    /* background-color: var(--counter-color);
+    color: var(--main-color);
+    opacity: 1; */
+    font-weight: var(--font-weight-bold, 700);
+}
+.calendar_wrap .day.othermonth {
+    opacity: .25;
+}
+.calendar_wrap a[href] {
+    /*opacity: 1;*/
+    font-weight: var(--font-weight-bold);
+    transition: background-color .2s;
+
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    line-height: 2;
+    border-radius: 50%;
+    background-color: rgba(var(--counter-color-rgb), .12);
+    text-decoration: none;
+}
+.calendar_wrap a[href]:hover {
+    background-color: rgba(var(--counter-color-rgb), .24);
+}

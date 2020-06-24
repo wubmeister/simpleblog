@@ -132,7 +132,7 @@
     <div class="primary topbar<?php if (is_singular()) echo ' inverted'; ?>">
         <div class="large container">
             <div class="brandbox"></div>
-            <a class="brand" href="/">Simple Blog</a>
+            <a class="brand" href="/"><?php bloginfo('name'); ?></a>
             <nav class="nav nav-dropdown">
                 <ul>
                     <li class="leaf"><a href="#">Home</a></li>

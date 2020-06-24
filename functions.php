@@ -78,6 +78,35 @@ function simpleblog_customize_register( $wp_customize )
 
 add_action( 'customize_register', 'simpleblog_customize_register' );
 
+function simpleblog_register_widgets() {
+    register_sidebar([
+		'name' => __('Footer 1'),
+		'id' => 'footer-1',
+		'before_widget' => '',
+		'after_widget' => '',
+	]);
+    register_sidebar([
+		'name' => __('Footer 2'),
+		'id' => 'footer-2',
+		'before_widget' => '',
+		'after_widget' => '',
+	]);
+    register_sidebar([
+		'name' => __('Footer 3'),
+		'id' => 'footer-3',
+		'before_widget' => '',
+		'after_widget' => '',
+	]);
+    register_sidebar([
+		'name' => __('Footer 4'),
+		'id' => 'footer-4',
+		'before_widget' => '',
+		'after_widget' => '',
+	]);
+}
+
+add_action( 'widgets_init', 'simpleblog_register_widgets' );
+
 function simpleblog_get_post_meta( $post_id = null, $location = 'single-top' ) {
 
 	// Require post ID.
