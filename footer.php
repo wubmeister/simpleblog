@@ -5,7 +5,7 @@
                 <div class="columns">
                 <?php if (is_active_sidebar('footer-1')): ?>
                     <div class="column">
-                        <div class="brand">Simple Blog</div>
+                        <div class="brand"><?php echo get_theme_mod('simpleblog_brand_text', get_bloginfo('name')); ?></div>
                         <?php dynamic_sidebar('footer-1'); ?>
                     </div>
                 <?php endif; ?>

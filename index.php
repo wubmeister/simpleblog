@@ -27,11 +27,11 @@ get_header(); ?>
                     <div class="caption">
                         <h1>
                             <?php
-                            $ct = trim(get_theme_mod('cover_text'));
+                            $ct = trim(get_theme_mod('simpleblog_cover_text'));
                             echo $ct ? $ct : get_bloginfo('name');
                             ?>
                             <?php
-                            $tw = trim(get_theme_mod('typewriter'));
+                            $tw = trim(get_theme_mod('simpleblog_typewriter'));
                             if ($tw) {
                                 echo '<span id="cover-typewriter"><ul><li>' .
                                     preg_replace('/\s*,\s*/', '</li><li>', $tw) .

@@ -8,6 +8,23 @@ add_theme_support( 'custom-header' );
 function simpleblog_customize_register( $wp_customize )
 {
 	$sections = [
+		"brand" => [
+			"label" => __("Brand"),
+			"settings" => [
+				"brand_text" => [
+					"type" => "text",
+					"label" => __("Brand text"),
+				],
+				"brand_image" => [
+					"type" => "media",
+					"label" => __("Logo"),
+				],
+				"brand_image_footer" => [
+					"type" => "media",
+					"label" => __("Logo for the footer"),
+				],
+			],
+		],
 		"content" => [
 			"label" => __("Content"),
 			"settings" => [
@@ -53,6 +70,7 @@ function simpleblog_customize_register( $wp_customize )
 		if ($section_name != 'colors') {
 			$wp_customize->add_section($section_name, [
 				'title' => $section['label'],
+				'capability' => 'edit_theme_options',
 			]);
 		}
 
@@ -64,14 +82,29 @@ function simpleblog_customize_register( $wp_customize )
 			if ($setting['sanitize_callback']) $args['sanitize_callback'] = $setting['sanitize_callback'];
 			$wp_customize->add_setting($sn, $args);
 
-			$args = [
-				'label' => $setting['label'],
-				'section' => $section_name,
-				'type' => $setting['type'],
-				'settings' => $sn
-			];
-			if ($setting['options']) $args['options'] = $setting['options'];
-			$wp_customize->add_control($sn, $args);
+			if ($setting['type'] == 'media') {
+				$args['mime_type'] = 'image';
+				$wp_customize->add_control(
+					new WP_Customize_Media_Control(
+						$wp_customize,
+						$sn,
+						[
+							'section' => $section_name,
+							'label' => $setting['label'],
+							'mime_type' => isset($setting['mime_type']) ? $setting['mime_type'] : 'image'
+						]
+					)
+				);
+			} else {
+				$args = [
+					'label' => $setting['label'],
+					'section' => $section_name,
+					'type' => $setting['type'],
+					'settings' => $sn
+				];
+				if ($setting['options']) $args['options'] = $setting['options'];
+				$wp_customize->add_control($sn, $args);
+			}
 		}
 	}
 }
