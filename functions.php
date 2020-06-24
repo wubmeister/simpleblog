@@ -470,6 +470,8 @@ function simpleblog_comments_template()
 {
 	echo '<div class="comments"><div class="content">';
 
+	echo '<h3>' . __("Comments") . '</h3>';
+
 	$comments = get_comments([ 'hierarchical' => 'threaded' ]);
 	simpleblog_render_comments($comments);
 
