@@ -37,8 +37,8 @@ for ($i = 0; $i < $numCircles; $i++) {
 
 if (isset($_GET['text'])) {
     $cx = $width / 2;
-    $cy = ($height / 2) - 10;
-    $fs = $height / 10;
+    $cy = ($height / 2) - ($height / 80);
+    $fs = $height / 8;
     $svg .= "<text x=\"{$cx}\" y=\"{$cy}\" text-anchor=\"middle\" style=\"font: 900 {$fs}px 'Playfair Display', serif;\">{$_GET['text']}</text>";
 }
 if (isset($_GET['subtext'])) {

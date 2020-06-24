@@ -5,6 +5,13 @@ require_once "inc/settings.php";
 add_theme_support( 'post-thumbnails' );
 add_theme_support( 'custom-header' );
 
+function simpleblog_enqueue_comment_reply_script() {
+    if ( get_option( 'thread_comments' ) ) {
+        wp_enqueue_script( 'comment_reply' );
+    }
+}
+add_action( 'comment_form_before', 'simpleblog_enqueue_comment_reply_script' );
+
 function simpleblog_customize_register( $wp_customize )
 {
 	$sections = [
@@ -420,4 +427,69 @@ function simpleblog_get_post_meta( $post_id = null, $location = 'single-top' ) {
 function simpleblog_the_post_meta( $post_id = null, $location = 'single-top' )
 {
     echo simpleblog_get_post_meta($post_id, $location);
+}
+
+function simpleblog_format_date($date)
+{
+	if (is_string($date)) {
+		$date = strtotime($date);
+	}
+
+	return strftime(__("%B %e, %Y"), $date);
+}
+
+function simpleblog_render_comments($comments)
+{
+	$themeBase = get_template_directory_uri();
+
+	foreach ($comments as $comment) {
+		echo "<div class=\"comment\" data-comment-id=\"{$comment->comment_ID}\">
+				<div class=\"avatar\">
+					<img src=\"{$themeBase}/images/default_avatar.svg\"/>
+				</div>
+				<div class=\"content\">
+					<div class=\"author\">{$comment->comment_author}
+					<div class=\"meta\">" . simpleblog_format_date($comment->comment_date) . "</div></div>
+					<div class=\"body\">
+						<p>" . str_replace("\n", '<br/>', $comment->comment_content) . "</p>
+						<div class=\"actions\"><a href=\"#\" class=\"primary link\" data-place-comment>Reply to {$comment->comment_author}</a></div>
+					</div>";
+
+		$children = $comment->get_children();
+		if ($children) {
+			echo "<div class=\"replies\">";
+			simpleblog_render_comments($children);
+			echo "</div>";
+		}
+
+		echo "</div></div>";
+	}
+}
+
+function simpleblog_comments_template()
+{
+	echo '<div class="comments"><div class="content">';
+
+	$comments = get_comments([ 'hierarchical' => 'threaded' ]);
+	simpleblog_render_comments($comments);
+
+	if (comments_open()) {
+
+		echo "<p>
+				<a href=\"#\" class=\"small primary button\" data-place-comment>
+					<i class=\"far fa-comment\"></i>
+					Leave a comment
+				</a>
+			</p>
+
+			<div id=\"comment-form\" class=\"primary\">
+				<a href=\"#\" class=\"primary link\" data-cancel-comment>Cancel</a>";
+
+				comment_form();
+
+		echo "</div>";
+
+	}
+
+	echo "</div></div>";
 }

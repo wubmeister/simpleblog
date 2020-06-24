@@ -1,4 +1,4 @@
-.button {
+.button, .submit {
     -webkit-appearance: none;
     display: inline-block;
     margin: 0;
@@ -16,7 +16,7 @@
     transition: background-color .2s;
     cursor: pointer;
 }
-.button:hover {
+.button:hover, .submit:hover {
     background-color: var(--main-color-hover, rgb(184, 184, 184));
 }
 
@@ -40,7 +40,7 @@
 .button.xsmall {
     font-size: .625rem;
 }
-.button.small {
+.button.small, .submit {
     font-size: .75rem;
 }
 .button.large {

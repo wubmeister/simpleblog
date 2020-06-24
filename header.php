@@ -67,6 +67,7 @@
     <link rel="stylesheet" href="<?php echo $themeBase; ?>/css/article.css" />
     <link rel="stylesheet" href="<?php echo $themeBase; ?>/css/button.css" />
     <link rel="stylesheet" href="<?php echo $themeBase; ?>/css/calendar.css" />
+    <link rel="stylesheet" href="<?php echo $themeBase; ?>/css/comments.css" />
     <link rel="stylesheet" href="<?php echo $themeBase; ?>/css/cover.css" />
     <link rel="stylesheet" href="<?php echo $themeBase; ?>/css/footer.css" />
     <link rel="stylesheet" href="<?php echo $themeBase; ?>/css/hamburger.css" />

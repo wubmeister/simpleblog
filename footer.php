@@ -72,6 +72,7 @@
 
         {
             let currAnchor = null;
+            let postId = null;
 
             let clearCommentForm = () => {
                 let commentForm = document.getElementById('comment-form');
@@ -98,7 +99,16 @@
                         let commentForm = document.getElementById('comment-form');
                         clearCommentForm();
                         content.appendChild(commentForm);
-                        commentForm.querySelector('[name="comment_parent"]').value = el.getAttribute('data-comment-id');
+                        if (el.hasAttribute('data-comment-id')) {
+                            // if (!postId) postId = commentForm.querySelector('[name="comment_post_ID"]').value;
+                            commentForm.querySelector('[name="comment_parent"]').value = el.getAttribute('data-comment-id');
+                            // commentForm.querySelector('[name="comment_post_ID"]').value = "";
+                        } else {
+                            commentForm.querySelector('[name="comment_parent"]').value = 0;
+                            // if (postId) {
+                            //     commentForm.querySelector('[name="comment_post_ID"]').value = postId;
+                            // }
+                        }
                         commentForm.style.display = 'block';
                         anchor.oldDisplay = getComputedStyle(anchor).display;
                         anchor.style.display = "none";

@@ -57,13 +57,20 @@
 .comment .actions {
     margin-top: -1em;
 }
+.comment a[href] {
+    color: var(--link-color);
+    text-decoration: none;
+}
+.comment a[href]:hover {
+    color: var(--link-color-hover);
+}
 .comment .link {
     font-size: .875em;
-    color: rgba(var(--text-color-rgb), 0.5);
+    color: rgba(var(--text-color-rgb), 0.5) !important;
     text-decoration: none;
 }
 .comment .link:hover {
-    color: rgba(var(--text-color-rgb), 0.75);
+    color: rgba(var(--text-color-rgb), 0.75) !important;
 }
 
 @media screen and (min-width: 576px) {
@@ -93,6 +100,7 @@
     display: flex;
     flex-wrap: wrap;
     margin: 0 -.5rem;
+    font-size: .875rem;
 }
 .comment-form > p {
     width: 100%;

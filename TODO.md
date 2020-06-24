@@ -1,8 +1,7 @@
 # To do
 
-- Social icons topbar
 - Page navigation
-- Comment section
+- Translations
 
 ## Settings
 

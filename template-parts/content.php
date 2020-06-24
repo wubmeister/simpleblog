@@ -19,6 +19,12 @@
 
             <?php the_content(); ?>
 
+            <?php if ( comments_open() || get_comments_number() ) :
+                    // comments_template();
+                    simpleblog_comments_template();
+
+			endif; ?>
+
         </div>
     </div>
 </article>
