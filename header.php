@@ -135,7 +135,7 @@
             <a class="brand" href="/"><?php echo get_theme_mod('simpleblog_brand_text', get_bloginfo('name')); ?></a>
             <nav class="nav nav-dropdown">
                 <ul>
-                    <li class="leaf"><a href="#">Home</a></li>
+                    <!-- <li class="leaf"><a href="#">Home</a></li>
                     <li class="active node">
                         <a href="#">About</a>
                         <ul>
@@ -150,7 +150,6 @@
                             </li>
                         </ul>
                     </li>
-                    <!-- <li class="subheader">More navigation</li> -->
                     <li class="node">
                         <a href="#">Solutions</a>
                         <ul>
@@ -165,10 +164,24 @@
                             <li class="leaf"><a href="#">Chapter 3.3</a></li>
                         </ul>
                     </li>
-                    <li class="leaf"><a href="#">Contact</a></li>
+                    <li class="leaf"><a href="#">Contact</a></li> -->
                     <li class="item">
-                        <a class="primary social-link" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="primary social-link" href="#"><i class="fab fa-instagram"></i></a>
+                        <?php $twitter = get_theme_mod('simpleblog_twitter');
+                        if ($twitter): ?>
+                        <a class="primary social-link" href="<?php echo $twitter; ?>"><i class="fab fa-twitter"></i></a>
+                        <?php endif;
+                        $facebook = get_theme_mod('simpleblog_facebook');
+                        if ($facebook): ?>
+                        <a class="primary social-link" href="<?php echo $facebook; ?>"><i class="fab fa-facebook"></i></a>
+                        <?php endif;
+                        $instagram = get_theme_mod('simpleblog_instagram');
+                        if ($instagram): ?>
+                        <a class="primary social-link" href="<?php echo $instagram; ?>"><i class="fab fa-instagram"></i></a>
+                        <?php endif;
+                        $youtube = get_theme_mod('simpleblog_youtube');
+                        if ($youtube): ?>
+                        <a class="primary social-link" href="<?php echo $youtube; ?>"><i class="fab fa-youtube"></i></a>
+                        <?php endif; ?>
                     </li>
                     <!-- <li class="leaf"><a href="#"><i class="far fa-search"></i></a></li> -->
                 </ul>

@@ -25,6 +25,27 @@ function simpleblog_customize_register( $wp_customize )
 				],
 			],
 		],
+		"socialmedia" => [
+			"label" => __("Social media"),
+			"settings" => [
+				"twitter" => [
+					"type" => "text",
+					"label" => __("Twitter"),
+				],
+				"facebook" => [
+					"type" => "text",
+					"label" => __("Facebook"),
+				],
+				"instagram" => [
+					"type" => "text",
+					"label" => __("Instagram"),
+				],
+				"youtube" => [
+					"type" => "text",
+					"label" => __("YouTube"),
+				],
+			],
+		],
 		"content" => [
 			"label" => __("Content"),
 			"settings" => [

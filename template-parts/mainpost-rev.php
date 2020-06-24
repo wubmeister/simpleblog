@@ -2,7 +2,7 @@
     <?php if (has_post_thumbnail()): ?>
     <div class="image" style="background-image:url(<?php echo get_the_post_thumbnail_url(); ?>)"></div>
     <?php else: ?>
-    <div class="image" style="background-image:url(<?php echo get_template_directory_uri(); ?>/image.php?width=500&height=320)"></div>
+    <div class="image" style="background-image:url(<?php echo get_template_directory_uri(); ?>/image.php?width=500&height=320&color=<?php echo simpleblog_get_color('primary_color', true); ?>)"></div>
     <?php endif; ?>
     <div class="content">
         <?php

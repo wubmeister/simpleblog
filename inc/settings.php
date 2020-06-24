@@ -77,21 +77,50 @@ function simpleblog_generate_settings_cache($pageBgColor, $primaryColor, $second
 
 function simpleblog_get_color_settings()
 {
-    $pageBgColor = get_theme_mod('simpleblog_page_bg_color');
-    $primaryColor = get_theme_mod('simpleblog_primary_color');
-    $secondaryColor = get_theme_mod('simpleblog_secondary_color');
-    $textColor = get_theme_mod('simpleblog_text_color');
-    $linkColor = get_theme_mod('simpleblog_link_color');
-    $key = md5("{$pageBgColor}{$primaryColor}{$secondaryColor}{$textColor}{$linkColor}");
+    static $colors = null;
 
-    $data = null;
-    // if (file_exists(__DIR__ . '/settings_cache.php')) {
-    //     $data = include("settings_cache.php");
-    // }
+    if (!$colors) {
 
-    if (!$data || $data['key'] != $key) {
-        $data = simpleblog_generate_settings_cache($pageBgColor, $primaryColor, $secondaryColor, $textColor, $linkColor);
+        $pageBgColor = get_theme_mod('simpleblog_page_bg_color');
+        $primaryColor = get_theme_mod('simpleblog_primary_color');
+        $secondaryColor = get_theme_mod('simpleblog_secondary_color');
+        $textColor = get_theme_mod('simpleblog_text_color');
+        $linkColor = get_theme_mod('simpleblog_link_color');
+        $key = md5("{$pageBgColor}{$primaryColor}{$secondaryColor}{$textColor}{$linkColor}");
+
+        $data = null;
+        if (file_exists(__DIR__ . '/settings_cache.php')) {
+            $data = include("settings_cache.php");
+        }
+
+        if (!$data || $data['key'] != $key) {
+            $data = simpleblog_generate_settings_cache($pageBgColor, $primaryColor, $secondaryColor, $textColor, $linkColor);
+        }
+
+        $colors = $data;
     }
 
-    return $data;
+    return $colors;
+}
+
+function simpleblog_get_color($key, $convertToHex = false)
+{
+    $colors = simpleblog_get_color_settings();
+    if (!isset($colors[$key])) return "";
+
+    $color = $colors[$key];
+
+    if ($convertToHex) {
+        if (preg_match('/rgba?\((\d{1,3}),\s(\d{1,3}),\s(\d{1,3})/', $color, $match)) {
+            $color = sprintf(
+                '%02X%02X%02X',
+                (int)$match[1],
+                (int)$match[2],
+                (int)$match[3]
+            );
+        } else {
+            // $color = "";
+        }
+    }
+    return $color;
 }
