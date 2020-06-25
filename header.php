@@ -30,6 +30,7 @@
             --page-background-rgb: <?php echo $colors['page_bg_color_rgb']; ?>;
 
             --theme-primary-color: <?php echo $colors['primary_color']; ?>;
+            --theme-primary-color-rgb: <?php echo $colors['primary_color_rgb']; ?>;
             --theme-primary-color-hover: <?php echo $colors['primary_color_hover']; ?>;
             --theme-primary-counter-color: <?php echo $colors['primary_counter_color']; ?>;
             --theme-primary-counter-color-rgb: <?php echo $colors['primary_counter_color_rgb']; ?>;

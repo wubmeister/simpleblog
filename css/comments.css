@@ -55,14 +55,7 @@
 }
 
 .comment .actions {
-    margin-top: -1em;
-}
-.comment a[href] {
-    color: var(--link-color);
-    text-decoration: none;
-}
-.comment a[href]:hover {
-    color: var(--link-color-hover);
+
 }
 .comment .link {
     font-size: .875em;

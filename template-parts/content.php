@@ -15,16 +15,16 @@
 
 <article class="article">
     <div class="small container">
-        <div class="body">
+        <div class="article-body">
 
             <?php the_content(); ?>
+
+        </div>
 
             <?php if ( comments_open() || get_comments_number() ) :
                     // comments_template();
                     simpleblog_comments_template();
 
 			endif; ?>
-
-        </div>
     </div>
 </article>

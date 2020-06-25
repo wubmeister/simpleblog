@@ -452,8 +452,8 @@ function simpleblog_render_comments($comments)
 					<div class=\"meta\">" . simpleblog_format_date($comment->comment_date) . "</div></div>
 					<div class=\"body\">
 						<p>" . str_replace("\n", '<br/>', $comment->comment_content) . "</p>
-						<div class=\"actions\"><a href=\"#\" class=\"primary link\" data-place-comment>Reply to {$comment->comment_author}</a></div>
-					</div>";
+					</div>
+					<div class=\"actions\"><a href=\"#\" class=\"primary link\" data-place-comment>Reply to {$comment->comment_author}</a></div>";
 
 		$children = $comment->get_children();
 		if ($children) {

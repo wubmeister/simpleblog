@@ -46,6 +46,7 @@ function simpleblog_generate_settings_cache($pageBgColor, $primaryColor, $second
         'page_bg_color' => $pbg->getRgbString(),
         'page_bg_color_rgb' => $pbg->getRawRgbString(),
         'primary_color' => $pc->getRgbString(),
+        'primary_color_rgb' => $pc->getRawRgbString(),
         'primary_color_hover' => $pcHover->getRgbString(),
         'primary_counter_color' => $pc->getLuminocity() <= 75 ? $white->getRgbString() : $tc->getRgbString(),
         'primary_counter_color_rgb' => $pc->getLuminocity() <= 75 ? $white->getRawRgbString() : $tc->getRawRgbString(),
@@ -89,9 +90,9 @@ function simpleblog_get_color_settings()
         $key = md5("{$pageBgColor}{$primaryColor}{$secondaryColor}{$textColor}{$linkColor}");
 
         $data = null;
-        if (file_exists(__DIR__ . '/settings_cache.php')) {
-            $data = include("settings_cache.php");
-        }
+        // if (file_exists(__DIR__ . '/settings_cache.php')) {
+        //     $data = include("settings_cache.php");
+        // }
 
         if (!$data || $data['key'] != $key) {
             $data = simpleblog_generate_settings_cache($pageBgColor, $primaryColor, $secondaryColor, $textColor, $linkColor);
