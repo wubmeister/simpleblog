@@ -31,7 +31,7 @@ get_header(); ?>
                             echo $ct ? $ct : get_bloginfo('name');
                             ?>
                             <?php
-                            $tw = trim(get_theme_mod('simpleblog_typewriter'));
+                            $tw = trim(get_theme_mod('simpleblog_cover_typewriter'));
                             if ($tw) {
                                 echo '<span id="cover-typewriter"><ul><li>' .
                                     preg_replace('/\s*,\s*/', '</li><li>', $tw) .
