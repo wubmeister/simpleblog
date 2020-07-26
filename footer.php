@@ -77,6 +77,7 @@
             let clearCommentForm = () => {
                 let commentForm = document.getElementById('comment-form');
                 let form = commentForm.querySelector('form');
+                if (!form) return;
                 for (let input of form.elements) {
                     if (input.tagName.toLocaleLowerCase() == "textarea" || input.type == "text" || input.type == "email" || input.type == "url") {
                         input.value = "";
@@ -86,7 +87,7 @@
 
             let placeComment = (anchor) => {
                 let el = anchor;
-                while (el && !el.hasAttribute('data-comment-id')) {
+                while (el && !(el.hasAttribute('data-comment-id') || el.classList.contains('comments'))) {
                     el = el.parentElement;
                 }
 
