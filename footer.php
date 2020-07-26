@@ -30,7 +30,7 @@
     <?php endif; ?>
 
     <footer class="gray rockbottom">
-        &copy; 2020 <?php bloginfo('name'); ?> &nbsp;&nbsp;&bull;&nbsp;&nbsp; <?php echo __('All rights reserved'); ?>
+        &copy; 2020 <?php bloginfo('name'); ?> &nbsp;&nbsp;&bull;&nbsp;&nbsp; <?php echo __('Alle rechten voorbehouden'); ?>
     </footer>
 
     <div class="dimmer"></div>

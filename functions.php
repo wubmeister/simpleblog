@@ -455,7 +455,7 @@ function simpleblog_render_comments($comments)
 					</div>";
 
 		if (comments_open()) {
-			echo "<div class=\"actions\"><a href=\"#\" class=\"primary link\" data-place-comment>Reply to {$comment->comment_author}</a></div>";
+			echo "<div class=\"actions\"><a href=\"#\" class=\"primary link\" data-place-comment>Reageer op {$comment->comment_author}</a></div>";
 		}
 
 		$children = $comment->get_children();
@@ -483,7 +483,7 @@ function simpleblog_comments_template()
 		echo "<p>
 				<a href=\"#\" class=\"small primary button\" data-place-comment>
 					<i class=\"far fa-comment\"></i>
-					Leave a comment
+					Plaats een reactie
 				</a>
 			</p>
 
