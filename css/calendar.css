@@ -102,18 +102,26 @@
     background-color: rgba(var(--counter-color-rgb), .12);
 }
 
-.calendar_wrap .wp-calendar-nav-prev:before,
-.calendar_wrap .wp-calendar-nav-next:before {
+.calendar_wrap .wp-calendar-nav-prev a,
+.calendar_wrap .wp-calendar-nav-next a {
+    white-space: nowrap;
+    overflow: hidden;
+    color: transparent !important;
+    padding-left: .6875em;
+}
+.calendar_wrap .wp-calendar-nav-prev a:before,
+.calendar_wrap .wp-calendar-nav-next a:before {
     display: inline-block;
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
     font-size: .875rem;
+    color: var(--counter-color);
     opacity: .5;
 }
-.calendar_wrap .wp-calendar-nav-prev:before {
+.calendar_wrap .wp-calendar-nav-prev a:before {
     content: '\f053';
 }
-.calendar_wrap .wp-calendar-nav-next:before {
+.calendar_wrap .wp-calendar-nav-next a:before {
     content: '\f054';
 }
 

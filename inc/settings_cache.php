@@ -5,6 +5,7 @@ return [
     'page_bg_color' => 'rgb(255, 255, 255)',
     'page_bg_color_rgb' => '255, 255, 255',
     'primary_color' => 'rgb(244, 224, 77)',
+    'primary_color_rgb' => '244, 224, 77',
     'primary_color_hover' => 'rgb(212, 193, 46)',
     'primary_counter_color' => 'rgb(63, 63, 68)',
     'primary_counter_color_rgb' => '63, 63, 68',
