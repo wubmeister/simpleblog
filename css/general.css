@@ -19,3 +19,14 @@
 .post-meta a[href] {
     color: inherit;
 }
+
+@media screen and (max-width: 767px) {
+    .post-meta {
+        text-align: center;
+        margin-top: .5rem;
+        justify-content: space-evenly;
+    }
+    .post-meta .meta-text {
+        display: block;
+    }
+}

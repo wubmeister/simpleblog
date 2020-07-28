@@ -13,8 +13,8 @@ function tw(element) {
 
     let convertItem = (item) => {
         let chars = item.innerText.split('')
-           .map(ch => `<span>${ch == ' ' ? '&nbsp;' : ch}</span>`);
-        item.innerHTML = chars.join('');
+           .map(ch => `<span${ch == ' ' ? ' class="sp"' : ''}>${ch == ' ' ? ' ' : ch}</span>`);
+        item.innerHTML = chars.join('') + '<span class="cur"></span>';
     }
 
     let nextItem = () => {
@@ -24,7 +24,7 @@ function tw(element) {
         if (++itemIndex >= items.length) {
             itemIndex = 0;
         }
-        currSpans = items[itemIndex].querySelectorAll('span');
+        currSpans = items[itemIndex].querySelectorAll('span:not(.cur)');
         for (let span of currSpans) {
             span.style.display = 'none';
         }

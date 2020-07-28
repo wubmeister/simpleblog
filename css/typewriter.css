@@ -16,16 +16,25 @@
     90% { opacity: .5; }
     100% { opacity: 0; }
 }
-.tw:after {
+/* .tw:after {
     content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
+    display: inline-block;
+    position: static;
     width: 2px;
+    height: 1.125em;
+    vertical-align: top;
     background-color: var(--text-color);
     animation: tw-blink 1s  infinite;
+    word-break: keep-all;
+} */
+.tw .cur {
+    display: inline-block;
+    width: 2px;
+    height: 1.125em;
+    vertical-align: top;
+    background-color: var(--text-color);
+    animation: tw-blink 1s  infinite;
+    word-break: keep-all;
 }
 .tw li {
     display: none;
@@ -33,3 +42,6 @@
 .tw li span {
     display: none;
 }
+/*.tw li span.sp:before {
+    content: '\A';
+}*/

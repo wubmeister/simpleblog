@@ -51,13 +51,14 @@
 }
 
 .cover h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-bottom: 0;
     color: var(--counter-color);
 }
-.cover h1 span {
+.cover h1 > span {
     font-weight: normal;
     opacity: .7;
+    display: block;
 }
 .cover p {
     font-size: 0.875rem;
@@ -106,6 +107,9 @@
 
     .cover h1 {
         font-size: 3rem;
+    }
+    .cover h1 > span {
+        display: inline-block;
     }
     .cover .subtitle {
         font-size: 1.125rem;
