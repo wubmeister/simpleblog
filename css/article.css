@@ -26,8 +26,14 @@
     text-decoration: none;
     color: inherit;
     z-index: 1;
+
+    background-image: linear-gradient(rgba(var(--theme-primary-color-rgb), .5), rgba(var(--theme-primary-color-rgb), .5));
+    background-position: 0% 100%;
+    background-size: 100% 5px;
+    background-repeat: no-repeat;
+    transition: background-size .2s;
 }
-.article-body a[href]:before,
+/* .article-body a[href]:before,
 .comment .body a[href]:before {
     content: "";
     display: block;
@@ -41,6 +47,10 @@
 .article-body a[href]:hover:before,
 .comment .body a[href]:hover:before {
     height: 1.125em;
+} */
+.article-body a[href]:hover,
+.comment .body a[href]:hover {
+    background-size: 100% 100%;
 }
 
 @media screen and (min-width: 576px) {
