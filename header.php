@@ -80,6 +80,7 @@
     <link rel="stylesheet" href="<?php echo $themeBase; ?>/css/postcard.css" />
     <link rel="stylesheet" href="<?php echo $themeBase; ?>/css/social.css" />
     <link rel="stylesheet" href="<?php echo $themeBase; ?>/css/topbar.css" />
+    <link rel="stylesheet" href="<?php echo $themeBase; ?>/css/wp-blocks.css" />
 
     <!-- <link rel="stylesheet" href="vendor/fontawesome-free-5.13.0-web/css/all.css" /> -->
     <script src="https://kit.fontawesome.com/ee86041869.js" crossorigin="anonymous"></script>
