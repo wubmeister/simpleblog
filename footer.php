@@ -173,6 +173,23 @@
                 tw(twElement.querySelector('ul'));
             }
         }
+
+        {
+            let embedWrappers = document.querySelectorAll('.wp-block-embed__wrapper');
+            for (let wrapper of embedWrappers) {
+                let iframe = wrapper.querySelector('iframe');
+                if (iframe) {
+                    let ratio = parseFloat(iframe.getAttribute('height')) / parseFloat(iframe.getAttribute('width'));
+                    let ratioEl = document.createElement('div');
+                    ratioEl.className = 'ratio';
+                    ratioEl.style.paddingTop = `${100 * ratio}%`;
+                    wrapper.appendChild(ratioEl);
+                    iframe.removeAttribute('width');
+                    iframe.removeAttribute('height');
+                    wrapper.classList.add('fixed');
+                }
+            }
+        }
     </script>
 </body>
 </html>
