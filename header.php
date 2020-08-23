@@ -13,9 +13,40 @@
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no"/>
 
-    <title><?php bloginfo('name'); ?></title>
+    <title><?php if (is_singular()) { single_post_title(); echo ' - '; } bloginfo('name'); ?></title>
 
     <?php wp_head(); ?>
+
+    <?php
+    if ( have_posts() && is_singular() ) {
+        $socialImage = null;
+        if (has_post_thumbnail()) {
+            $socialImage = get_the_post_thumbnail_url(null, 'medium');
+        }
+
+        the_post();
+        $title = get_the_title();
+        $permalink = get_the_permalink();
+        $description = strip_tags(get_the_excerpt());
+        rewind_posts();
+        ?>
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="<?php echo $title; ?>" />
+        <?php if ($description) { ?><meta name="twitter:description" content="<?php echo $description; ?>" /><?php } ?>
+        <meta name="twitter:url" content="<?php echo $permalink; ?>" />
+        <?php if ($socialImage) { ?><meta name="twitter:image" content="<?php echo $socialImage; ?>" /><?php } ?>
+        <meta name="twitter:site" content="@wubbobos" />
+        <meta name="twitter:author" content="@wubbobos" />
+
+        <meta property="og:title" content="<?php echo $title; ?>" />
+        <meta property="og:type" content="Website" />
+        <?php if ($socialImage) { ?><meta name="og:image" content="<?php echo $socialImage; ?>" /><?php } ?>
+        <meta property="og:url" content="<?php echo $permalink; ?>" />
+        <?php if ($description) { ?><meta property="og:description" content="<?php echo $description; ?>" /><?php } ?>
+        <?php
+    }
+    ?>
 
     <?php $themeBase = get_template_directory_uri(); ?>
 
