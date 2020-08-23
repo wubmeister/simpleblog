@@ -122,7 +122,8 @@
     <?php
     wp_body_open();
     ?>
-
+<?php
+/*
     <div class="offcanvas">
         <nav class="nav nav-drilldown">
             <ul>
@@ -162,14 +163,17 @@
     </div>
 
     <a class="hamburger" data-offcanvas-trigger><span></span><span></span><span></span></a>
-
+*/
+?>
     <div class="primary topbar<?php if (is_singular()) echo ' inverted'; ?>">
         <div class="large container">
             <div class="brandbox"></div>
             <a class="brand" href="/"><?php echo get_theme_mod('simpleblog_brand_text', get_bloginfo('name')); ?></a>
             <nav class="nav nav-dropdown">
                 <ul>
-                    <!-- <li class="leaf"><a href="#">Home</a></li>
+                    <?php
+                    /*
+                    <li class="leaf"><a href="#">Home</a></li>
                     <li class="active node">
                         <a href="#">About</a>
                         <ul>
@@ -198,7 +202,9 @@
                             <li class="leaf"><a href="#">Chapter 3.3</a></li>
                         </ul>
                     </li>
-                    <li class="leaf"><a href="#">Contact</a></li> -->
+                    <li class="leaf"><a href="#">Contact</a></li>
+                    */
+                    ?>
                     <li class="item">
                         <?php $twitter = get_theme_mod('simpleblog_twitter');
                         if ($twitter): ?>
