@@ -7,6 +7,7 @@
     padding: 0;
     list-style: none;
     display: flex;
+    flex-wrap: wrap;
     font-size: .875rem;
     margin-top: -1em;
     opacity: .75;
@@ -28,5 +29,16 @@
     }
     .post-meta .meta-text {
         display: block;
+    }
+
+    .cover .post-meta {
+        flex-wrap: wrap;
+        text-align: left;
+    }
+    .cover .post-meta .meta-wrapper {
+        white-space: nowrap;
+    }
+    .cover .post-meta .meta-text {
+        display: inline-block;
     }
 }

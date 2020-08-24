@@ -206,6 +206,7 @@ function simpleblog_get_post_meta( $post_id = null, $location = 'single-top' ) {
 				'author',
 				'post-date',
 				'comments',
+				'photo',
 				'sticky',
 			)
 		);
@@ -231,6 +232,7 @@ function simpleblog_get_post_meta( $post_id = null, $location = 'single-top' ) {
 				'author',
 				'post-date',
 				'comments',
+				'photo',
 				'sticky',
 				'tags',
 			//)
@@ -289,7 +291,7 @@ function simpleblog_get_post_meta( $post_id = null, $location = 'single-top' ) {
 							<?php
 							printf(
 								/* translators: %s: Author name. */
-								__( 'By %s', 'simpleblog' ),
+								__( 'Door %s', 'simpleblog' ),
 								'<a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author_meta( 'display_name' ) ) . '</a>'
 							);
 							?>
@@ -364,6 +366,23 @@ function simpleblog_get_post_meta( $post_id = null, $location = 'single-top' ) {
 						</span>
 						<span class="meta-text">
 							<?php comments_popup_link(); ?>
+						</span>
+					</li>
+					<?php
+
+				}
+
+				// Photo.
+				if ( in_array( 'photo', $post_meta, true ) && has_post_thumbnail() ) {
+
+					$has_meta = true;
+					?>
+					<li class="post-sticky meta-wrapper">
+						<span class="meta-icon">
+                            <i class="fas fa-camera-retro"></i>
+						</span>
+						<span class="meta-text">
+							<?php echo get_the_post_thumbnail_caption();; ?>
 						</span>
 					</li>
 					<?php
