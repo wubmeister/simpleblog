@@ -34,6 +34,7 @@
     .cover .post-meta {
         flex-wrap: wrap;
         text-align: left;
+        justify-content: center;
     }
     .cover .post-meta .meta-wrapper {
         white-space: nowrap;

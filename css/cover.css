@@ -38,13 +38,13 @@
     height: 150px;
 }
 .cover.small {
-    height: 175px;
+    height: 200px;
 }
 .cover.large {
-    height: 250px;
+    height: 300px;
 }
 .cover.xlarge {
-    height: 300px;
+    height: 350px;
 }
 .cover.fullscreen {
     height: 100vh;
