@@ -382,7 +382,7 @@ function simpleblog_get_post_meta( $post_id = null, $location = 'single-top' ) {
                             <i class="fas fa-camera-retro"></i>
 						</span>
 						<span class="meta-text">
-							<?php echo get_the_post_thumbnail_caption();; ?>
+							<?php echo str_replace('<a href=', '<a target="_blank" href=', get_the_post_thumbnail_caption()); ?>
 						</span>
 					</li>
 					<?php
