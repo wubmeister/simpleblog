@@ -375,17 +375,20 @@ function simpleblog_get_post_meta( $post_id = null, $location = 'single-top' ) {
 				// Photo.
 				if ( in_array( 'photo', $post_meta, true ) && has_post_thumbnail() ) {
 
-					$has_meta = true;
-					?>
-					<li class="post-sticky meta-wrapper">
-						<span class="meta-icon">
-                            <i class="fas fa-camera-retro"></i>
-						</span>
-						<span class="meta-text">
-							<?php echo str_replace('<a href=', '<a target="_blank" href=', get_the_post_thumbnail_caption()); ?>
-						</span>
-					</li>
-					<?php
+					$caption = trim(get_the_post_thumbnail_caption());
+					if ($caption) {
+						$has_meta = true;
+						?>
+						<li class="post-sticky meta-wrapper">
+							<span class="meta-icon">
+								<i class="fas fa-camera-retro"></i>
+							</span>
+							<span class="meta-text">
+								<?php echo str_replace('<a href=', '<a target="_blank" href=', $caption); ?>
+							</span>
+						</li>
+						<?php
+					}
 
 				}
 
